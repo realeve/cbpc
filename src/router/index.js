@@ -3,17 +3,14 @@ import VueRouter from 'vue-router';
 import Util from '../libs/util';
 import iView from 'iview';
 
-import Home from '../views/index.vue';
+import routes from './router';
 
 Vue.use(VueRouter);
 
 // 路由配置
 const RouterConfig = {
-    routes: [{
-        path: '/',
-        name: 'Home',
-        component: Home
-    }]
+    mode: 'hash',
+    routes,
 };
 
 const router = new VueRouter(RouterConfig);
