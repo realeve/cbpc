@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-header></v-header>
-        <router-view></router-view>
+        <router-view :style="{'min-height':minHeight}"></router-view>
         <v-footer></v-footer>
     </div>
 </template>
@@ -12,9 +12,16 @@
     import VFooter from './components/VFooter';
 
     export default {
-        components:{
+        components: {
             VHeader,
             VFooter
+        },
+        computed: {
+            minHeight() {
+                let topHeight = 62;
+                let bottomHeight = 124;
+                return (window.outerHeight - topHeight - bottomHeight - 4) + 'px';
+            }
         },
         data() {
             return {

@@ -1,9 +1,20 @@
 <template>
     <div class="wrap">
-        <v-topbg :type="type"></v-topbg>
+        <v-topbg v-if="type!='content'" :type="type"></v-topbg>
         <div class="main container">
             <div class="content sec-panel">
-                <v-article-list :loadMore="false" :article="articleList"></v-article-list>
+                <div class="sec-panel-head" v-if="type=='content'">
+                    <h1>产品设计</h1>
+                </div>
+                <template v-if="articleType == 'image'">
+                    <v-article-list :loadMore="false" :article="articleList"></v-article-list>
+                </template>
+                <div v-else-if="articleType == 'text'">
+                    <v-article-text-list :article="articleList"></v-article-text-list>
+                </div>
+                <div v-else>
+                    <v-article-thumb-list :article="articleList"></v-article-thumb-list>
+                </div>
                 <div class="page clearfix">
                     <Page :total="100" show-elevator></Page>
                 </div>
@@ -21,6 +32,8 @@
     import VTopbg from '../components/List/VTopbg.vue';
 
     import VArticleList from '../components/Home/VArticleList.vue';
+    import VArticleTextList from '../components/Home/VArticleTextList.vue';
+    import VArticleThumbList from '../components/Home/VArticleThumbList.vue';
 
     import WImage from '../components/Widget/WImage.vue';
     import WText from '../components/Widget/WText.vue';
@@ -30,46 +43,69 @@
         components: {
             VTopbg,
             VArticleList,
-
+            VArticleTextList,
+            VArticleThumbList,
             WImage,
             WText,
             WThumb
         },
-        data(){
-            return{
-                type:'text',
-                articleList:[]
+        data() {
+            return {
+                type: 'text',
+                articleType: 'image',
+                articleList: []
             };
         },
-        methods:{
-            getArticleList(){
+        methods: {
+            getArticleList() {
                 let data = {
-                    category:'行业动态',
-                    img:'/static/image/news.jpg',
-                    url:{
-                        category:'#',
-                        author:'#',
-                        article:'#',
-                        dpt:'#',
+                    category: '行业动态',
+                    img: '/static/image/news.jpg',
+                    url: {
+                        category: '#',
+                        author: '#',
+                        article: '#detail/1',
+                        dpt: '#',
                     },
-                    title:'京东无人机可把一吨货物送到偏远农村，未来要覆盖中国10个省份',
-                    desc:'京东目前正在研发6种不同的送货无人机，电池的续航能力依然是困扰发展的重要因素',
-                    dpt:'技术质量部',
-                    author:'倪震',
-                    date:'2017年6月9日',
-                    readNum:'82'
+                    title: '京东无人机可把一吨货物送到偏远农村，未来要覆盖中国10个省份',
+                    desc: '京东目前正在研发6种不同的送货无人机，电池的续航能力依然是困扰发展的重要因素',
+                    dpt: '技术质量部',
+                    author: '倪震',
+                    date: '2017年6月9日',
+                    readNum: '82'
                 };
-                for(let i=0;i<8;i++){
+                for (let i = 0; i < 8; i++) {
                     this.articleList.push(data);
                 }
             },
-            getListType(){
-               let type = this.$route.params.type;
-               this.type = (type=='1')? 'text':'image';
-               console.log(this.type);
+            getListType() {
+                let type = this.$route.params.type;
+                switch (type) {
+                    case '1':
+                        this.type = 'text';
+                        this.articleType = 'image';
+                        break;
+                    case '2':
+                        this.type = 'image';
+                        this.articleType = 'image';
+                        break;
+                    case '3':
+                        this.type = 'image';
+                        this.articleType = 'text';
+                        break;
+                    case '4':
+                        this.type = 'content';
+                        this.articleType = 'image';
+                        break;
+                    case '5':
+                        this.type = 'image';
+                        this.articleType = 'thumb';
+                        break;
+                }
+                console.log(this.articleType);
             }
         },
-        mounted(){
+        mounted() {
             this.getArticleList();
             this.getListType();
         }
@@ -81,7 +117,7 @@
         text-align: center;
         margin-top: 10px;
         padding-bottom: 20px;
-        display:flex;
+        display: flex;
         justify-content: center;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <ul class="article-list tab-list active">
+    <ul class="article-list">
         <li v-for="(item,i) in article" class="item" :key="i">
             <div class="item-img">
                 <a :href="item.url.article">
