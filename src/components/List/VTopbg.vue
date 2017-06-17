@@ -26,4 +26,8 @@
         height: 300px;
         background-image: url('/static/image/topbar.jpg')
     }
+
+    .special-head {
+        padding: 50px 50px 30px 50px;
+    }
 </style>
