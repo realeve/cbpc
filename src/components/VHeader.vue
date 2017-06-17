@@ -45,5 +45,7 @@
         text-decoration: none;
         font-weight: 100;
     }
-
+    .header{
+        background: rgba(255,255,255,0.97);
+    }
 </style>
