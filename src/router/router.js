@@ -1,8 +1,20 @@
 const routers = [{
     path: '/',
     meta: {
-        title: '内网大爷'
+        title: '信息网首页'
     },
     component: (resolve) => require(['../views/index.vue'], resolve)
+}, {
+    path: '/list/:type',
+    meta: {
+        title: '文苑飞歌'
+    },
+    component: (resolve) => require(['../views/list.vue'], resolve)
+}, {
+    path: '/special/',
+    meta: {
+        title: 'XX专题'
+    },
+    component: (resolve) => require(['../views/special.vue'], resolve)
 }];
 export default routers;

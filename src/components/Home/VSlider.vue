@@ -2,7 +2,7 @@
     <div class="slider-wrap clearfix">
         <div class="main-slider flexslider pull-left">
             <Carousel autoplay v-model="curIdx">
-                <Carousel-item v-for="item of slideData">
+                <Carousel-item v-for="item of slideData" :key="item">
                     <div class="slide-item">
                         <a :href="item.url" target="_blank">
                             <img :src="item.img">
@@ -52,6 +52,9 @@
     .slide-item {
         img {
             width: 100%;
+        }
+        .slide-title{
+            background:rgba(0,0,0,0.6);
         }
     }
 </style>

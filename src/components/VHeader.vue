@@ -7,15 +7,9 @@
             <div class="collapse navbar-collapse">
                 <nav class="navbar-left primary-menu">
                     <ul class="nav navbar-nav">
-                        <li class="menu-item"><a href="/justnews">首页</a></li>
-                        <li class="menu-item dropdown"><a href="#" class="dropdown-toggle">文章分类</a>
-                            <ul role="menu" class=" dropdown-menu" style="display: none;">
-                                <li class="menu-item"><a href="#">创业分享</a></li>
-                                <li class="menu-item"><a href="#">用户体验</a></li>
-                                <li class="menu-item"><a href="#">产品设计</a></li>
-                                <li class="menu-item"><a href="#">行业动态</a></li>
-                            </ul>
-                        </li>
+                        <li class="menu-item"><a href="#">首页</a></li>
+                        <li class="menu-item"><a href="#/list/1" target="_blank">栏目1</a></li>
+                        <li class="menu-item"><a href="#/list/2" target="_blank">栏目2</a></li>
                         <li class="menu-item"><a href="#special">专题列表</a></li>
                         <li class="menu-item"><a href="#members">用户列表</a></li>
                     </ul>

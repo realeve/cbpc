@@ -9,42 +9,54 @@
                 <li class="tab"><a href="javascript:;">用户体验</a></li>
             </ul>
         </div>
-        <ul class="article-list tab-list active">
-            <li v-for="i in 5" class="item">
-                <div class="item-img">
-                    <a href="#" target="_blank">
-                        <img class="j-lazy" src="/static/image/news.jpg" width="480" height="300" style="display: inline;">
-                    </a>
-                    <a class="item-category" href="#" target="_blank">行业动态</a>
-                </div>
-                <div class="item-content">
-                    <h2 class="item-title"><a href="#" target="_blank">京东无人机可把一吨货物送到偏远农村，未来要覆盖中国10个省份</a></h2>
-                    <div class="item-excerpt">
-                        <p>京东目前正在研发6种不同的送货无人机，电池的续航能力依然是困扰发展的重要因素</p>
-                    </div>
-                    <div class="item-meta">
-                        <div class="item-meta-li author">
-                            <a data-user="1" target="_blank" href="#" class="avatar">
-                                            <img src="/static/image/user.jpg" class="func-um_user gravatar avatar avatar-60 um-avatar um-avatar-uploaded" width="60" height="60"></a>
-                            <a class="nickname" href="#" target="_blank">作者姓名</a>
-                        </div>
-                        <span class="item-meta-li date">2017年6月9日</span>
-                        <span class="item-meta-li views" title="阅读数"><icon name="eye"></icon><i class="fa fa-eye"></i> <span class="data">82</span></span>
-                    </div>
-                </div>
-            </li>
-            <li class="load-more-wrap">
-                <a class="load-more" href="javascript:;">点击查看更多</a>
-            </li>
-        </ul>
+        <v-article-list :loadMore="true" :article="articleList"></v-article-list>     
+        <!--<div class="load-more-wrap">
+            <a class="load-more" href="javascript:;">点击查看更多</a>
+        </div>   -->
     </div>
 </template>
 <script>
+    import VArticleList from './VArticleList.vue';
     export default {
-
+        components:{
+            VArticleList
+        },
+        data(){
+            return{
+                articleList:[]
+            };
+        },
+        methods:{
+            getArticleList(){
+                let data = {
+                    category:'行业动态',
+                    url:{
+                        category:'#',
+                        author:'#',
+                        article:'#',
+                        dpt:'#',
+                    },
+                    img:'/static/image/news.jpg',
+                    title:'京东无人机可把一吨货物送到偏远农村，未来要覆盖中国10个省份',
+                    desc:'京东目前正在研发6种不同的送货无人机，电池的续航能力依然是困扰发展的重要因素',
+                    dpt:'技术质量部',
+                    author:'倪震',
+                    date:'2017年6月9日',
+                    readNum:'82'
+                };
+                for(let i=0;i<8;i++){
+                    this.articleList.push(data);
+                }
+            }
+        },
+        created(){
+            this.getArticleList();
+        }
     };
 </script>
 
 <style scoped lang="less">
-
+    // .load-more-wrap{
+    //     padding:0 15px 15px 15px;
+    // }
 </style>
