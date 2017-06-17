@@ -252,8 +252,8 @@
     }
 
     .widget_image_ad a {
-        width: 300px;
-        height: 200px;
+        width:100%;
+        min-height:120px;
         background: #4285F4;
         color: #fff;
         text-decoration: none;
