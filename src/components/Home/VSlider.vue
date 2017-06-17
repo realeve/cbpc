@@ -1,34 +1,25 @@
 <template>
     <div class="slider-wrap clearfix">
         <div class="main-slider flexslider pull-left">
-            <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                <ul class="slides" style="width: 1000%; margin-left: -670px;">
-                    <li v-for="i in 3" class="slide-item clone" aria-hidden="true" style="width: 670px; float: left; display: block;">
-                        <a href="#" target="_blank">
-                            <img src="/static/image/slide.jpg">
+            <Carousel autoplay v-model="curIdx">
+                <Carousel-item v-for="item of slideData">
+                    <div class="slide-item">
+                        <a :href="item.url" target="_blank">
+                            <img :src="item.img">
                         </a>
                         <h3 class="slide-title">
-                            <a href="#" target="_blank">这是幻灯滑块的标题{{i}}</a>
+                            <a :href="item.url" target="_blank">{{item.title}}</a>
                         </h3>
-                    </li>
-                </ul>
-            </div>
-            <ol class="flex-control-nav flex-control-paging">
-                <li><a class="flex-active">1</a></li>
-                <li><a class="">2</a></li>
-                <li><a class="">3</a></li>
-            </ol>
-            <ul class="flex-direction-nav">
-                <li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li>
-                <li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li>
-            </ul>
+                    </div>
+                </Carousel-item>
+            </Carousel>
         </div>
 
         <ul class="feature-post pull-right">
             <li v-for="i in 3">
                 <a href="#" target="_blank">
-                                    <img src="/static/image/ux-1.png">
-                                </a>
+                    <img src="/static/image/ux-1.png">
+                </a>
                 <span>前端用户中心</span>
             </li>
         </ul>
@@ -36,10 +27,31 @@
 </template>
 <script>
     export default {
-
+        data() {
+            return {
+                curIdx:0,
+                slideData:[{
+                    title:'这是标题1',
+                    img:'/static/image/s1.jpg',
+                    url:'#'
+                },{
+                    title:'这是标题2',
+                    img:'/static/image/s2.jpg',
+                    url:'#'
+                },{
+                    title:'这是标题3',
+                    img:'/static/image/s3.jpg',
+                    url:'#'
+                }]
+            };
+        }
     };
 </script>
 
 <style scoped lang="less">
-
+    .slide-item {
+        img {
+            width: 100%;
+        }
+    }
 </style>
