@@ -10,10 +10,10 @@ util.title = function(title) {
 };
 
 const ajaxUrl = env === 'development' ?
-    'http://localhost:8080/static/data' :
+    './static/data' :
     env === 'production' ?
-    'https://www.url.com' :
-    'https://debug.url.com';
+    'https://realeve.github.io/cbpc/static/data/' :
+    'https://realeve.github.io/cbpc/static/data/';
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
