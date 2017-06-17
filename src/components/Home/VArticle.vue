@@ -10,9 +10,6 @@
             </ul>
         </div>
         <v-article-list :loadMore="true" :article="articleList"></v-article-list>     
-        <!--<div class="load-more-wrap">
-            <a class="load-more" href="javascript:;">点击查看更多</a>
-        </div>   -->
     </div>
 </template>
 <script>
@@ -33,7 +30,7 @@
                     url:{
                         category:'#',
                         author:'#',
-                        article:'#',
+                        article:'#detail/1',
                         dpt:'#',
                     },
                     img:'/static/image/news.jpg',
@@ -56,7 +53,5 @@
 </script>
 
 <style scoped lang="less">
-    // .load-more-wrap{
-    //     padding:0 15px 15px 15px;
-    // }
+
 </style>

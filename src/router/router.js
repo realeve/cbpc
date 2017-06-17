@@ -16,5 +16,11 @@ const routers = [{
         title: 'XX专题'
     },
     component: (resolve) => require(['../views/special.vue'], resolve)
+}, {
+    path: '/detail/:id',
+    meta: {
+        title: '文章详情'
+    },
+    component: (resolve) => require(['../views/detail.vue'], resolve)
 }];
 export default routers;

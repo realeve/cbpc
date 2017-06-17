@@ -11,7 +11,6 @@
                         <li class="menu-item"><a href="#/list/1" target="_blank">栏目1</a></li>
                         <li class="menu-item"><a href="#/list/2" target="_blank">栏目2</a></li>
                         <li class="menu-item"><a href="#special">专题列表</a></li>
-                        <li class="menu-item"><a href="#members">用户列表</a></li>
                     </ul>
                 </nav>
                 <div class="navbar-action pull-right">
