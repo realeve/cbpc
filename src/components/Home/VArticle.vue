@@ -33,7 +33,7 @@
                         article:'#detail/1',
                         dpt:'#',
                     },
-                    img:'/static/image/news.jpg',
+                    img:'/static/img/news.jpg',
                     title:'京东无人机可把一吨货物送到偏远农村，未来要覆盖中国10个省份',
                     desc:'京东目前正在研发6种不同的送货无人机，电池的续航能力依然是困扰发展的重要因素',
                     dpt:'技术质量部',

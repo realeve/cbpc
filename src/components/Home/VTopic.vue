@@ -8,7 +8,7 @@
                 <li v-for="i in 4" class="topic">
                     <a class="topic-wrap" href="#" target="_blank">
                         <div class="cover-container">
-                            <img src="/static/image/topic.png">
+                            <img src="/static/img/topic.png">
                         </div>
                         <span>专题{{i}}</span>
                     </a>

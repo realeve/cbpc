@@ -24,7 +24,7 @@
 <style scoped lang="less">
     .banner {
         height: 300px;
-        background-image: url('/static/image/topbar.jpg')
+        background-image: url('/static/img/topbar.jpg')
     }
 
     .special-head {

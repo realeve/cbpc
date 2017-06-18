@@ -18,7 +18,7 @@
         <ul class="feature-post pull-right">
             <li v-for="i in 3">
                 <a href="#special">
-                    <img src="/static/image/ux-1.png">
+                    <img src="/static/img/ux-1.png">
                 </a>
                 <span>专题{{i}}</span>
             </li>
@@ -32,15 +32,15 @@
                 curIdx:0,
                 slideData:[{
                     title:'这是标题1',
-                    img:'/static/image/s1.jpg',
+                    img:'/static/img/s1.jpg',
                     url:'#detail/1'
                 },{
                     title:'这是标题2',
-                    img:'/static/image/s2.jpg',
+                    img:'/static/img/s2.jpg',
                     url:'#detail/2'
                 },{
                     title:'这是标题3',
-                    img:'/static/image/s3.jpg',
+                    img:'/static/img/s3.jpg',
                     url:'#detail/3'
                 }]
             };

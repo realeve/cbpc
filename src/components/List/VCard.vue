@@ -2,7 +2,7 @@
     <div class="special-item">
         <div class="special-item-top">
             <div class="special-item-thumb">
-                <a href="#" target="_blank"><img src="/static/image/topic.png"></a>
+                <a href="#" target="_blank"><img src="/static/img/topic.png"></a>
             </div>
             <div class="special-item-title">
                 <h2><a href="#" target="_blank">劳动礼赞</a></h2>

@@ -1,7 +1,5 @@
 .DS_Store
 node_modules/
-src/config/*.tmp
-src/config/env.js
 npm-debug.log
 yarn-error.log
 npm-debug.log*

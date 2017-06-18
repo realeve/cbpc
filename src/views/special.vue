@@ -34,7 +34,7 @@
             getArticleList() {
                 let data = {
                     category: '行业动态',
-                    img: '/static/image/news.jpg',
+                    img: '/static/img/news.jpg',
                     url: {
                         category: '#',
                         author: '#',

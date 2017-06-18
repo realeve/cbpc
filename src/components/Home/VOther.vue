@@ -6,7 +6,7 @@
             </div>
             <div class="sec-panel-body">
                 <ul class="list list-partner">
-                    <li v-for="i in 8"><img style="width:152px" src="/static/image/logo.png"></li>
+                    <li v-for="i in 8"><img style="width:152px" src="/static/img/logo.png"></li>
                 </ul>
             </div>
             <div class="sec-panel-head">

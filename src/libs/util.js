@@ -12,8 +12,9 @@ util.title = function(title) {
 const ajaxUrl = env === 'development' ?
     './static/data' :
     env === 'production' ?
-    'https://realeve.github.io/cbpc/static/data/' :
-    'https://realeve.github.io/cbpc/static/data/';
+    './static/data/' :
+    './static/data/';
+// 此处 env应配置为布置网址接口地址
 
 util.ajax = axios.create({
     baseURL: ajaxUrl,
