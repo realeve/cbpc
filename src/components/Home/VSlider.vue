@@ -57,4 +57,8 @@
             background:rgba(0,0,0,0.6);
         }
     }
+    // .slider-wrap{
+    //     display:flex;
+    //     flex-direction: row;
+    // }
 </style>

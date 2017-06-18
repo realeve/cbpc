@@ -4,11 +4,11 @@
         <div class="main container">
 
         <div class="special-wrap">
-            <div class="special-list clearfix">
-                <div v-for="i in 8" class="col-md-6 col-xs-12 special-item-wrap" :key="i">
+            <Row class="special-list">
+                <Col v-for="i in 8" :md="12" :xs="24" class="special-item-wrap" :key="i">
                    <v-card></v-card>                     
-                </div>
-            </div>
+                </Col>
+            </Row>
         </div>
         </div>
     </div>

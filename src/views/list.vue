@@ -56,6 +56,16 @@
                 articleList: []
             };
         },
+        computed:{
+            curType(){
+                return this.$route.params.type;
+            }
+        },
+        watch:{
+            curType(){
+                this.init();
+            }
+        },
         methods: {
             getArticleList() {
                 let data = {
@@ -79,8 +89,7 @@
                 }
             },
             getListType() {
-                let type = this.$route.params.type;
-                switch (type) {
+                switch (this.curType) {
                     case '1':
                         this.type = 'text';
                         this.articleType = 'image';
@@ -102,12 +111,14 @@
                         this.articleType = 'thumb';
                         break;
                 }
-                console.log(this.articleType);
+            },
+            init(){
+                 this.getArticleList();
+            this.getListType();
             }
         },
         mounted() {
-            this.getArticleList();
-            this.getListType();
+            this.init();
         }
     };
 </script>

@@ -1,6 +1,6 @@
 <template>
-    <ul class="image-list clearfix">
-        <li v-for="(item,i) in article" :key="i" class="col-xs-6 col-md-4 col-sm-6 p-item">
+    <Row class="sec-panel-body image-list">
+        <Col v-for="(item,i) in article" :key="i" :xs="12" :md="8" :sm="12"  class="p-item">
             <div class="p-item-wrap">
                 <a class="thumb" :href="item.url.article" target="_blank">
             <img :src="item.img" width="480" height="300" style="display: inline;"></a>
@@ -8,8 +8,8 @@
                     <a :href="item.url.article" target="_blank">{{item.title}}</a>
                 </h2>
             </div>
-        </li>
-    </ul>
+        </Col>
+    </Row>
 </template>
 <script>
     export default {
