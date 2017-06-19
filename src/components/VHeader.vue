@@ -10,14 +10,14 @@
           <Menu-item name="">
             <router-link to="/" tag="p">首页</router-link>
           </Menu-item>
-          <Submenu name="list">
+          <sub-menu name="list">
             <template slot="title">
               文章分类
             </template>
             <Menu-item v-for="i in 5" :key="i" :name="'list/'+i">
               <router-link :to="'/list/'+i" tag="p">栏目{{i}}</router-link>
             </Menu-item>
-          </Submenu>
+          </sub-menu>
           <Menu-item name="special">
             <router-link to="/special" tag="p">专题列表</router-link>
           </Menu-item>
@@ -42,7 +42,12 @@
   </header>
 </template>
 <script>
+  import SubMenu from './Home/submenu.vue';
+
   export default {
+    components:{
+      SubMenu
+    },
     data() {
       return {
         active: false,
