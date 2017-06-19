@@ -3,7 +3,7 @@
         <div class="avatar-wrap">
             <a target="_blank" href="#" class="avatar-link"><img src="/static/img/user.jpg" class="func-um_user gravatar avatar avatar-120 um-avatar um-avatar-uploaded" width="120" height="120" alt="Lomu"></a></div>
         <div class="profile-info">
-            <p><span class="author-name">倪震</span><span class="author-title">技术质量部</span></p>
+            <p><span class="author-name">王狗蛋</span><span class="author-title">信息技术部</span></p>
             <p class="author-description">XX工程师，先后就职于企业文化部、企管信息部，目前主要负责XX工作。</p>
         </div>
         <div class="profile-posts">

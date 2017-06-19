@@ -1,6 +1,6 @@
 <template>
     <div class="widget widget_lastest_products">
-        <h3 class="widget-title">产品设计</h3>
+        <h3 class="widget-title">热点文章</h3>
         <Row class="p-list clearfix">
             <Col v-for="i in 8" :xs="24" :md="12"  class="p-item" :key="i">
                 <div class="p-item-wrap">

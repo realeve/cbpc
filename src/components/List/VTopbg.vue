@@ -2,14 +2,14 @@
     <div>
         <div v-if="type!='text'" class="banner banner-white">
             <div class="banner-inner">
-                <h1>文苑飞歌</h1>
-                <p>该主题的一些描述</p>
+                <h1>文苑飞歌【banner底图】</h1>
+                <p>该主题的一些不可描述</p>
             </div>
         </div>
         <div v-else>
             <div class="special-head">
-                <h1 class="special-title">文苑飞歌</h1>
-                <p>该主题的一些描述</p>
+                <h1 class="special-title">文苑飞歌【没有底图样式】</h1>
+                <p>该主题的一些不可描述</p>
             </div>
         </div>
     </div>

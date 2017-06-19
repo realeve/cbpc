@@ -20,7 +20,7 @@
                 <a href="#special">
                     <img src="/static/img/ux-1.png">
                 </a>
-                <span>专题{{i}}</span>
+                <span>要闻{{i}}</span>
             </li>
         </ul>
     </div>
@@ -31,15 +31,15 @@
             return {
                 curIdx:0,
                 slideData:[{
-                    title:'这是标题1',
+                    title:'这是头条标题1',
                     img:'/static/img/s1.jpg',
                     url:'#detail/1'
                 },{
-                    title:'这是标题2',
+                    title:'这是头条标题2',
                     img:'/static/img/s2.jpg',
                     url:'#detail/2'
                 },{
-                    title:'这是标题3',
+                    title:'这是头条标题3',
                     img:'/static/img/s3.jpg',
                     url:'#detail/3'
                 }]
