@@ -1,11 +1,13 @@
 <template>
   <header class="header">
-    <div class="container clearfix">
+    <Row class="container">
+      <Col :md="4">
       <div class="navbar-header">
-        <a class="logo" href="#">CBPC LOGO</a>
+        <a class="logo" href="#">CBPC</a>
       </div>
-      <Row class="collapse navbar-collapse">
-        <Col :md="10">
+      </Col>
+      <div class="collapse navbar-collapse">
+        <Col :md="11">
         <Menu mode="horizontal" :active-name="activeName">
           <Menu-item name="">
             <router-link to="/" tag="p">首页</router-link>
@@ -21,9 +23,12 @@
           <Menu-item name="special">
             <router-link to="/special" tag="p">专题列表</router-link>
           </Menu-item>
+          <Menu-item name="about">
+            <router-link to="/about" tag="p">关于我们</router-link>
+          </Menu-item>
         </Menu>
         </Col>
-        <Col :md="9" justify="end">
+        <Col :md="9">
         <div class="navbar-action pull-right">
           <div class="navbar-search" :class="{active}">
             <input ref="search" type="text" class="navbar-search-input" autocomplete="off" placeholder="输入关键词搜索..." v-model="keyWord"
@@ -33,19 +38,19 @@
           <div class="j-user-wrap">
             <a class="login cur" href="#login">登录</a>--&gt;
             <a class="login cur" href="#register">注册</a>
+            <a class="publish" href="#">投稿</a>
           </div>
-          <a class="publish" href="#">投稿</a>
         </div>
         </Col>
-      </Row>
-    </div>
+      </div>
+    </Row>
   </header>
 </template>
 <script>
   import SubMenu from './Home/submenu.vue';
 
   export default {
-    components:{
+    components: {
       SubMenu
     },
     data() {
@@ -91,6 +96,8 @@
 
   .header {
     background: rgba(255, 255, 255, 0.97);
+    display: flex;
+    justify-content: center;
   }
 
   .ivu-menu-item,
@@ -100,6 +107,17 @@
 
   .ivu-menu-horizontal.ivu-menu-light:after {
     display: none;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+  }
+  // .navbar-search.active{
+  //   width:160px;
+  // }
+
+  .login{
+    margin-left:10px;
   }
 
 </style>

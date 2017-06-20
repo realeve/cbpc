@@ -16,7 +16,7 @@
 
     .widget_image_ad a {
         width: 100%;
-        min-height: 120px;
+        min-height: 240px;
         background: #4285F4;
         color: #fff;
         text-decoration: none;

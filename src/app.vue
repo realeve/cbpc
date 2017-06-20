@@ -2,6 +2,7 @@
   <div class="app">
     <v-header></v-header>
     <router-view class="v-content"></router-view>
+    <Back-top></Back-top>
     <v-footer></v-footer>
   </div>
 </template>
@@ -43,4 +44,25 @@
   .v-content{
     flex: 1;
   }
+  
+  .ivu-tabs-bar {
+    margin-bottom: 0px;
+  }
+
+  .ivu-tabs-tab:not(.ivu-badge) {
+    font-size: .16rem;
+    color: #666;
+    line-height: 36px;
+    font-weight: 400;
+  }
+
+  .ivu-tabs-nav .ivu-tabs-tab {
+    padding: 8px !important;
+  }
+
+  .sec-panel-head,
+  .widget {
+    padding: 5px 15px;
+  }
+
 </style>

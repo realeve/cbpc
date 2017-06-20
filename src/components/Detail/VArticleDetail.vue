@@ -3,7 +3,7 @@
         <div class="entry">
             <v-article-head :article="article"></v-article-head>
             <div class="entry-content clearfix" v-html="article.content"> </div>
-            <v-tag :tags="article.tags" :zan="article.zan"></v-tag>
+            <v-tag :article="article"></v-tag>
             <v-recommend></v-recommend>
         </div>
         <!-- .comments-area -->

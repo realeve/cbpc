@@ -52,5 +52,11 @@ const routers = [{
         title: '搜索'
     },
     component: (resolve) => require(['../views/search.vue'], resolve)
+}, {
+    path: '/about',
+    meta: {
+        title: '关于我们'
+    },
+    component: (resolve) => require(['../views/about.vue'], resolve)
 }];
 export default routers;

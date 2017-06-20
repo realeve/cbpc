@@ -1,51 +1,47 @@
 <template>
-  <div class="wrap">
-    <v-topbg :type="type"></v-topbg>
-    <div class="main container">
-
-      <div class="special-wrap">
-        <Row class="special-list">
-          <Col v-for="i in 8" :md="12" :xs="24" class="special-item-wrap" :key="i">
-          <v-card></v-card>
-          </Col>
-        </Row>
-      </div>
+  <div class="sec-panel main-list">
+    <div class="sec-panel-head">
+      <Tabs value="name1">
+        <Tab-pane v-for="tabname of tabList" :label="tabname" :name="tabname">
+          <ul class="post-list">
+            <li v-for="(item,i) of articleList" class="list-item" :key="item">
+              <span class="date pull-right">{{item.date}}</span>
+              <a :href="item.url.article">[{{tabname}}]{{item.title}}</a>
+            </li>
+          </ul>
+        </Tab-pane>
+      </Tabs>
     </div>
   </div>
 </template>
 <script>
-  import '../assets/css/main.css';
-  import VTopbg from '../components/List/VTopbg.vue';
-  import VCard from '../components/List/VCard.vue';
-
-
+  import VArticleTextList from './VArticleTextList.vue';
   export default {
+    props:['tabList'],
     components: {
-      VTopbg,
-      VCard
+      VArticleTextList
     },
     data() {
       return {
-        type: 'text',
-        articleList: []
+        articleList: [],
       };
     },
     methods: {
       getArticleList() {
         let data = {
           category: '行业动态',
-          img: '/static/img/news.jpg',
           url: {
             category: '#',
             author: '#',
-            article: '#',
+            article: '#detail/1',
             dpt: '#',
           },
+          img: '/static/img/news.jpg',
           title: '京东无人机可把一吨货物送到偏远农村，未来要覆盖中国10个省份',
           desc: '京东目前正在研发6种不同的送货无人机，电池的续航能力依然是困扰发展的重要因素',
           dpt: '信息技术部',
           author: '王狗蛋',
-          date: '2017年6月9日',
+          date: '6月9日',
           readNum: '82'
         };
         for (let i = 0; i < 8; i++) {
@@ -53,20 +49,19 @@
         }
       }
     },
-    mounted() {
+    created() {
       this.getArticleList();
     }
   };
 
 </script>
-<style scoped>
-  .page {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    padding-bottom: 20px;
-    display: flex;
-    justify-content: center;
+
+<style lang="less">
+  .list-item {
+    padding-left:10px;
+    a {
+      width: 80%;
+    }
   }
 
 </style>

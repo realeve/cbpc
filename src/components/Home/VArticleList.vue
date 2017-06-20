@@ -37,5 +37,7 @@
 </script>
 
 <style scoped lang="less">
-
+    .article-list{
+        padding:0;        
+    }
 </style>

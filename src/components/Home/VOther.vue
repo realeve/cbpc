@@ -6,7 +6,7 @@
       </div>
       <div class="sec-panel-body">
         <ul class="list list-partner">
-          <li v-for="i in 8"><img style="width:152px" src="/static/img/logo.png"></li>
+          <li v-for="i in 5"><img style="width:152px" src="/static/img/logo.png"></li>
         </ul>
       </div>
       <div class="sec-panel-head">
@@ -35,5 +35,8 @@
   }
   .container{
       padding:0;
+  }
+  .sec-panel{
+    margin-right: 20px;
   }
 </style>
