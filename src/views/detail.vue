@@ -6,7 +6,7 @@
       </div>
       <aside class="sidebar">
         <v-author></v-author>
-        <Affix offset-top="62">
+        <Affix :offset-top="62">
           <w-thumb></w-thumb>
           <w-text></w-text>
         </Affix>

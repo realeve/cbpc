@@ -2,7 +2,7 @@
     <div class="widget widget_lastest_products">
         <h3 class="widget-title">热点文章</h3>
         <Row class="p-list clearfix">
-            <Col v-for="i in 8" :xs="24" :md="12"  class="p-item" :key="i">
+            <Col v-for="i in 4" :xs="24" :md="12"  class="p-item" :key="i">
                 <div class="p-item-wrap">
                     <a class="thumb" href="#">
                                 <img class="j-lazy" src="/static/img/prod_design.png" width="480" height="300" style="display: inline;"> </a>

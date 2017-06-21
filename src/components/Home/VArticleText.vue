@@ -2,7 +2,7 @@
   <div class="sec-panel main-list">
     <div class="sec-panel-head">
       <Tabs value="name1">
-        <Tab-pane v-for="tabname of tabList" :label="tabname" :name="tabname">
+        <Tab-pane v-for="tabname of tabList" :label="tabname" :name="tabname" :key="tabname">
           <ul class="post-list">
             <li v-for="(item,i) of articleList" class="list-item" :key="item">
               <span class="date pull-right">{{item.date}}</span>

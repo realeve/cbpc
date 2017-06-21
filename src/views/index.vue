@@ -6,18 +6,18 @@
         <v-topic></v-topic>
         <v-article></v-article>
         <Row :gutter="20">
-          <Col :span="12">
+          <Col :md="12" :xs="24">
           <v-article-text :tabList="textList1"></v-article-text>
           </Col>
-          <Col :span="12">
+          <Col :md="12" :xs="24">
           <v-article-text :tabList="textList2"></v-article-text>
           </Col>
         </Row>
         <Row :gutter="20">
-          <Col :span="18">
+          <Col :md="18" :xs="24">
           <v-topic></v-topic>
           </Col>
-          <Col :span="6">
+          <Col :md="6" :xs="24">
           <div class="e-paper">
             <a>电子报</a>
           </div>
@@ -28,7 +28,7 @@
       <aside class="sidebar">
         <w-image></w-image>
         <w-tab-text></w-tab-text>
-        <Affix offset-top="62">
+        <Affix :offset-top="62">
           <w-thumb></w-thumb>
           <w-text></w-text>
         </Affix>
@@ -88,6 +88,12 @@
     justify-content: center;
     a {
       color: #fff;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .e-paper {
+      display: none !important;
     }
   }
 

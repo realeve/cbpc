@@ -30,10 +30,12 @@
         </Col>
         <Col :md="9">
         <div class="navbar-action pull-right">
-          <div class="navbar-search navbar-search-zoomicon" :class="{active}">
+          <div class="navbar-search" :class="{active}">
             <input ref="search" type="text" class="navbar-search-input" autocomplete="off" placeholder="输入关键词搜索..." v-model="keyWord"
               @keyup.enter="search" @blur="showSearchPanel(false)">
-            <a class="j-navbar-search" href="javascript:;" @mouseenter="showSearchPanel(true)"></a>
+            <a class="j-navbar-search" href="javascript:;" @mouseenter="showSearchPanel(true)">
+              <Icon class="search-icon" type="ios-search" :size="20"></Icon>
+            </a>
           </div>
           <div class="j-user-wrap">
             <a class="login cur" href="#login">登录</a>--&gt;
@@ -70,6 +72,7 @@
       search() {
         if (this.keyWord != '') {
           this.$router.push(`/search/${this.keyWord}`);
+          this.keyword = '';
         }
       }
     },
@@ -85,6 +88,16 @@
   .navbar-search-zoomicon {
     background: url("data:image/svg+xml;utf8,<svg focusable='false' xmlns='http://www.w3.org/2000/svg' viewBox='-6 0 24 24'><path d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'></path></svg>") no-repeat;
   }
+
+  .search-icon {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    color: #ccc;
+    top: -25px;
+    position: relative;
+  }
+
   .thinner {
     font-weight: 100;
   }
@@ -114,13 +127,11 @@
 
   .navbar-collapse {
     padding: 0;
-  }
-  // .navbar-search.active{
+  } // .navbar-search.active{
   //   width:160px;
   // }
-
-  .login{
-    margin-left:10px;
+  .login {
+    margin-left: 10px;
   }
 
 </style>
