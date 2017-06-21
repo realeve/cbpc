@@ -14,7 +14,7 @@
           </Menu-item>
           <sub-menu name="list">
             <template slot="title">
-              文章分类
+              栏目导航
             </template>
             <Menu-item v-for="i in 5" :key="i" :name="'list/'+i">
               <router-link :to="'/list/'+i" tag="p">栏目{{i}}</router-link>
