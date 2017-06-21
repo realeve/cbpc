@@ -1,16 +1,16 @@
 <template>
     <div class="sec-panel topic-recommend">
         <div class="sec-panel-head">
-            <h2>专题介绍 <small>专题模块标题旁边的描述文字</small> <a href="#" target="_blank" class="more">全部专题</a></h2>
+            <h2>专题介绍<a href="#special" class="more">全部专题</a></h2>
         </div>
         <div class="sec-panel-body">
             <ul class="list topic-list">
-                <li v-for="i in 4" class="topic">
-                    <a class="topic-wrap" href="#" target="_blank">
+                <li v-for="item of data" class="topic" :key="item.url">
+                    <a class="topic-wrap" :href="item.url">
                         <div class="cover-container">
-                            <img src="/static/img/topic.png">
+                            <img :src="item.img">
                         </div>
-                        <span>专题{{i}}</span>
+                        <span>{{item.title}}</span>
                     </a>
                 </li>
             </ul>
@@ -19,7 +19,7 @@
 </template>
 <script>
     export default {
-
+        props:['data']
     };
 </script>
 

@@ -2,20 +2,20 @@
   <div class="wrap">
     <div class="main container">
       <div class="content">
-        <v-slider></v-slider>
-        <v-topic></v-topic>
-        <v-article></v-article>
+        <v-slider :slider="home.sliderData" :special="home.specialData" />
+        <v-topic :data="home.topicData" />
+        <v-article :data="home.articleData" />
         <Row :gutter="20">
           <Col :md="12" :xs="24">
-          <v-article-text :tabList="textList1"></v-article-text>
+          <v-article-text :data="home.articleTextData" />
           </Col>
           <Col :md="12" :xs="24">
-          <v-article-text :tabList="textList2"></v-article-text>
+          <v-article-text :data="home.articleTextData2" />
           </Col>
         </Row>
         <Row :gutter="20">
           <Col :md="18" :xs="24">
-          <v-topic></v-topic>
+          <v-topic :data="home.topicData" />
           </Col>
           <Col :md="6" :xs="24">
           <div class="e-paper">
@@ -23,14 +23,14 @@
           </div>
           </Col>
         </Row>
-        <v-other></v-other>
+        <v-other/>
       </div>
       <aside class="sidebar">
         <w-image></w-image>
-        <w-tab-text></w-tab-text>
+        <w-tab-text :data="home.noticeData"/>
+        <w-thumb :data="home.popularData"/>
         <Affix :offset-top="62">
-          <w-thumb></w-thumb>
-          <w-text></w-text>
+          <w-text :data="home.quickData"></w-text>
         </Affix>
       </aside>
     </div>
@@ -51,6 +51,11 @@
 
   import SubMenu from '../components/Home/submenu.vue';
 
+  import {
+    mapActions,
+    mapState
+  } from 'vuex';
+
   export default {
     components: {
       SubMenu,
@@ -65,11 +70,24 @@
       WText,
       WThumb
     },
-    data() {
-      return {
-        textList1: ['党建', '工会', '团委'],
-        textList2: ['前沿', '安全', '质量', '成本', '职教'],
+    computed: {
+      ...mapState(['home'])
+    },
+    methods: {
+      ...mapActions(['getSlider', 'getSpecial', 'getTopic', 'getArticle', 'getArticleText','getNotice','getPopular','getQuick']),
+      init() {
+        this.getSlider();
+        this.getSpecial();
+        this.getTopic();
+        this.getArticle();
+        this.getArticleText();
+        this.getNotice();
+        this.getPopular();
+        this.getQuick();
       }
+    },
+    mounted() {
+      this.init();
     }
   };
 

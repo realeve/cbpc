@@ -25,7 +25,7 @@
             </div>
         </li>
         <li v-if="loadMore" class="load-more-wrap">
-            <a class="load-more" href="javascript:;">点击查看更多</a>
+            <a class="load-more" :href="loadMore">点击查看更多</a>
         </li>
     </ul>
 </template>

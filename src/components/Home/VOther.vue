@@ -2,27 +2,42 @@
   <div class="hidden-xs">
     <div class="sec-panel topic-recommend">
       <div class="sec-panel-head">
-        <h2>友商<small>兄弟单位啦</small> <a href="#" target="_blank" class="more">联系我们</a></h2>
+        <h2>友商 <a href="#about" target="_blank" class="more">联系我们</a></h2>
       </div>
       <div class="sec-panel-body">
         <ul class="list list-partner">
-          <li v-for="i in 5"><img style="width:152px" src="/static/img/logo.png"></li>
+          <li v-for="item in home.parternerData">
+            <img style="width:152px" :src="item.url">
+          </li>
         </ul>
       </div>
       <div class="sec-panel-head">
-        <h2>常用系统 <a href="#" target="_blank" class="more">申请加入</a></h2>
+        <h2>常用系统 <a href="#about" class="more">申请加入</a></h2>
       </div>
       <div class="sec-panel-body">
         <div class="list list-links">
-          <a v-for="i in 8" target="_blank" href="#">OA系统</a>
+          <a v-for="item of home.linkData" target="_blank" :href="item.url">{{item.name}}</a>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+  import {
+    mapState,
+    mapActions
+  } from 'vuex';
   export default {
-
+    computed: {
+      ...mapState(['home'])
+    },
+    methods:{
+      ...mapActions(['getParterner','getLink']),
+    },
+    mounted(){
+      this.getParterner();
+      this.getLink();
+    }
   };
 
 </script>

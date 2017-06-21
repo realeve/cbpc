@@ -1,0 +1,13 @@
+[{
+	"title":"这是要闻1的标题",
+	"img":"/static/img/ux-1.png",
+	"url":"#detail/1"
+},{
+	"title":"这是要闻2的标题",
+	"img":"/static/img/ux-1.png",
+	"url":"#detail/2"
+},{
+	"title":"这是要闻3的标题",
+	"img":"/static/img/ux-1.png",
+	"url":"#detail/3"
+}]

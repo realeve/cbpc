@@ -1,16 +1,20 @@
 <template>
-    <div class="widget widget_views">
-        <h3 class="widget-title">快捷入口</h3>
-        <ul>
-            <li v-for="i in 5"><a href="#">领导信箱</a></li>
-        </ul>
-    </div>
+  <div class="widget widget_views">
+    <h3 class="widget-title">{{data.category}}</h3>
+    <ul>
+      <li v-for="item of data.data"><a :href="item.url">{{item.title}}</a></li>
+    </ul>
+  </div>
 </template>
 
 <script>
-    export default {};
+  export default {
+    props: ['data']
+  };
+
 </script>
 
 <style scoped lang="less">
+
 
 </style>
