@@ -34,7 +34,8 @@
             <input ref="search" type="text" class="navbar-search-input" autocomplete="off" placeholder="输入关键词搜索..." v-model="keyWord"
               @keyup.enter="search" @blur="showSearchPanel(false)">
             <a class="j-navbar-search" href="javascript:;" @mouseenter="showSearchPanel(true)">
-              <Icon class="search-icon" type="ios-search" :size="20"></Icon>
+              <Icon class="search-icon" type="ios-search" :size="20"></Icon>              
+              <!--icon class="search-icon" name="search"></icon-->
             </a>
           </div>
           <div class="j-user-wrap">
@@ -90,12 +91,11 @@
   }
 
   .search-icon {
-    justify-content: center;
-    display: flex;
+    position: absolute;
+    top: 8px;
+    right:14px;
     text-align: center;
     color: #ccc;
-    top: -25px;
-    position: relative;
   }
 
   .thinner {
