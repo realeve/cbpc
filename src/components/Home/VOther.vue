@@ -1,5 +1,5 @@
 <template>
-  <div class="container hidden-xs">
+  <div class="hidden-xs">
     <div class="sec-panel topic-recommend">
       <div class="sec-panel-head">
         <h2>友商<small>兄弟单位啦</small> <a href="#" target="_blank" class="more">联系我们</a></h2>
@@ -33,10 +33,5 @@
       display: none !important;
     }
   }
-  .container{
-      padding:0;
-  }
-  .sec-panel{
-    margin-right: 20px;
-  }
+
 </style>

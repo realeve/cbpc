@@ -131,4 +131,10 @@
         display: flex;
         justify-content: center;
     }
+    .content{
+        padding:0 15px;
+    }
+    .sec-panel-body{
+        padding:10px 0;
+    }
 </style>

@@ -97,4 +97,10 @@
     }
   }
 
+  @media (max-width: 991px) {
+    .e-paper {
+      margin-bottom: 20px;
+    }
+  }
+
 </style>
