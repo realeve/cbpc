@@ -4,6 +4,10 @@
       <div class="entry-tag">
         <a v-for="item in article.tags" :key="item.title" :href="item.url" rel="tag">{{item.title}}</a>
       </div>
+    </div>
+    <div class="wrapper">
+      <div class="entry-tag">
+      </div>
       <div class="editor">
         <div class="author">
           <div class="title">
