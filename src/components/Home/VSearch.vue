@@ -7,7 +7,7 @@
             <div v-if="nodata" class="article-list">
                 <p class="nodata">抱歉，你搜索的内容未找到，请尝试使用其他关键词搜索。</p>
             </div>
-            <v-article-list v-else :loadMore="false" :article="articleList"></v-article-list>
+            <v-article-list v-else :loadMore="false" :article="articleList" class="list"></v-article-list>
         </template>
         <div v-if="!nodata && keyword!=''" class="page clearfix">
             <Page :total="100" show-elevator></Page>
@@ -84,5 +84,8 @@
     .nodata{
         padding: 20px 0 30px;
         font-size: 14px;
+    }
+    .list{
+        padding:0 15px!important;
     }
 </style>

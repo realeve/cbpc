@@ -16,13 +16,9 @@
                             <input autocomplete="off" class="input" type="password" />
                         </div>
                         <div class="submit">
-                            <a href="javascript:;" class="v-button-info">登录</a>
+                            <a href="javascript:;" class="v-button-info" @click="login()">登录</a>
                             <a href="#register" class="v-button">注册</a>
                         </div>
-                        <!--<div class="login-modal-body">
-                            <a href="javascript:;" class="btn-login">登录</a>
-                            <a href="#register" class="btn-register">注册</a>
-                        </div>-->
                         <div class="link-alt">
                             <a href="#reset">忘记密码？</a>
                         </div>
@@ -33,6 +29,9 @@
     </div>
 </template>
 <script>
+  import {
+    mapMutations
+  } from 'vuex';
     export default {
         components: {
 
@@ -42,9 +41,15 @@
 
             };
         },
-
-        mounted() {
-
+        methods:{
+            ...mapMutations(['loginStatus']),
+            login(){
+                this.$router.push('/');
+                this.loginStatus(true);
+            }
+        },
+        mounted(){
+            this.loginStatus(false);
         }
     };
 </script>

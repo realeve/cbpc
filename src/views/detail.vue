@@ -6,9 +6,9 @@
       </div>
       <aside class="sidebar">
         <v-author></v-author>
+        <w-thumb :data="home.popularData" />
         <Affix :offset-top="62">
-          <w-thumb></w-thumb>
-          <w-text></w-text>
+          <w-text :data="home.quickData"></w-text>
         </Affix>
       </aside>
     </div>
@@ -23,7 +23,10 @@
   import WThumb from '../components/Widget/WThumb.vue';
   import util from '../libs/util.js';
 
-  // import axios from 'axios';
+  import {
+    mapActions,
+    mapState
+  } from 'vuex';
 
   export default {
     components: {
@@ -55,11 +58,15 @@
         }
       };
     },
+    computed: {
+      ...mapState(['home'])
+    },
+    watch: {
+      curType() {
+        this.init();
+      }
+    },
     created() {
-      // axios.get('http://localhost:8080/static/data/article.json').then(res=>{
-      //    console.log(res.data);
-      //    this.article = res.data;
-      // });
       util.ajax.get('/article.json').then(res => {
         this.article = res.data;
       });

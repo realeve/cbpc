@@ -1,16 +1,15 @@
 <template>
-    <div class="wrap">
-       <div class="main container">
-           <p>这里需要做一个全宽屏页面显示关于我们</p>
-       </div>
+  <div class="wrap">
+    <div class="main container">
+    asdf
     </div>
+  </div>
 </template>
 <script>
-    import '../assets/css/main.css';
-    export default {
-       
-    };
+  import '../assets/css/main.css';
+
 </script>
 <style scoped>
-  
+
+
 </style>

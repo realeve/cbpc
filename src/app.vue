@@ -12,6 +12,10 @@
   import VHeader from './components/VHeader';
   import VFooter from './components/VFooter';
 
+  import {
+    mapActions
+  } from 'vuex';
+
   export default {
     components: {
       VHeader,
@@ -22,14 +26,21 @@
 
       };
     },
-    mounted() {
-
-    },
-    beforeDestroy() {
-
-    },
     methods: {
-
+      ...mapActions(['getSlider', 'getSpecial', 'getTopic', 'getArticle', 'getArticleText','getNotice','getPopular','getQuick']),
+      init() {
+        this.getSlider();
+        this.getSpecial();
+        this.getTopic();
+        this.getArticle();
+        this.getArticleText();
+        this.getNotice();
+        this.getPopular();
+        this.getQuick();
+      }
+    },
+    mounted() {
+      this.init();
     }
   };
 

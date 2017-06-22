@@ -1,43 +1,45 @@
 <template>
-  <div class="wrap">
+ <div class="wrap">
     <div class="main container">
       <div class="content">
-        <v-search></v-search>
+        <v-author></v-author>
       </div>
       <aside class="sidebar">
         <w-image></w-image>
-        <w-thumb :data="home.popularData" />
-        <Affix :offset-top="62">
-          <w-text :data="home.quickData"></w-text>
-        </Affix>
+        <w-tab-text :data="home.noticeData"/>
+        <w-thumb :data="home.popularData"/>
       </aside>
     </div>
   </div>
 </template>
 <script>
   import '../assets/css/main.css';
-  import VSearch from '../components/Home/VSearch.vue';
+  import VAuthor from '../components/Author';
+
+  import WTabText from '../components/Widget/WTabText.vue';
+
   import WImage from '../components/Widget/WImage.vue';
-  import WText from '../components/Widget/WText.vue';
   import WThumb from '../components/Widget/WThumb.vue';
 
-  // import qs from 'querystring';
-  // console.log(qs.parse(window.location.href.split('?')[1]));
-
   import {
+    mapActions,
     mapState
   } from 'vuex';
 
   export default {
     components: {
-      VSearch,
+      VAuthor,
       WImage,
-      WText,
-      WThumb
+      WThumb,
+      WTabText
     },
     computed: {
       ...mapState(['home'])
-    }
+    },
   };
 
 </script>
+<style scoped>
+
+
+</style>

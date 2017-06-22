@@ -34,14 +34,29 @@
             <input ref="search" type="text" class="navbar-search-input" autocomplete="off" placeholder="输入关键词搜索..." v-model="keyWord"
               @keyup.enter="search" @blur="showSearchPanel(false)">
             <a class="j-navbar-search" href="javascript:;" @mouseenter="showSearchPanel(true)">
-              <Icon class="search-icon" type="ios-search" :size="20"></Icon>              
-              <!--icon class="search-icon" name="search"></icon-->
+              <Icon class="search-icon" type="ios-search" :size="20"></Icon>
             </a>
           </div>
           <div class="j-user-wrap">
-            <a class="login cur" href="#login">登录</a>--&gt;
-            <a class="login cur" href="#register">注册</a>
-            <a class="publish" href="#">投稿</a>
+            <ul v-if="user.isLogin" class="profile">
+              <Dropdown style="margin-left: 20px" placement="bottom-end">
+                <a :href="user.url">
+                  <img :src="user.img"> {{user.name}}
+                  <Icon type="arrow-down-b"></Icon>
+                </a>
+                <Dropdown-menu slot="list">
+                  <Dropdown-item><p @click="userCenter">个人中心</p></Dropdown-item>
+                  <Dropdown-item>媒体库</Dropdown-item>
+                  <Dropdown-item>帐号设置</Dropdown-item>
+                  <Dropdown-item><p @click="logOut">退出登录</p></Dropdown-item>
+                </Dropdown-menu>
+              </Dropdown>
+            </ul>
+            <template v-else>
+              <a class="login cur" href="#login">登录</a>--&gt;
+              <a class="login cur" href="#register">注册</a>
+            </template>
+            <a class="publish" href="#publish">投稿</a>
           </div>
         </div>
         </Col>
@@ -52,9 +67,17 @@
 <script>
   import SubMenu from './Home/submenu.vue';
 
+  import {
+    mapState,
+    mapMutations
+  } from 'vuex';
+
   export default {
     components: {
       SubMenu
+    },
+    computed: {
+      ...mapState(['user'])
     },
     data() {
       return {
@@ -64,6 +87,7 @@
       };
     },
     methods: {
+      ...mapMutations(['loginStatus']),
       showSearchPanel(val) {
         this.active = val;
         if (val) {
@@ -75,6 +99,13 @@
           this.$router.push(`/search/${this.keyWord}`);
           this.keyword = '';
         }
+      },
+      logOut(){
+        this.loginStatus(false);
+        // this.$router.push('/login');
+      },
+      userCenter(){
+        this.$router.push('/author/'+this.user.name)
       }
     },
     mounted() {
@@ -89,7 +120,7 @@
   .search-icon {
     position: absolute;
     top: 6px;
-    right:14px;
+    right: 14px;
     text-align: center;
     color: #ccc;
   }
@@ -123,11 +154,24 @@
 
   .navbar-collapse {
     padding: 0;
-  } // .navbar-search.active{
-  //   width:160px;
-  // }
+  }
+
   .login {
     margin-left: 10px;
+  }
+
+  .login-menu-show {
+    display: block;
+  }
+
+  .navbar-action .profile a {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-action .profile img {
+    width: 35px;
+    height: 35px;
   }
 
 </style>

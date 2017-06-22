@@ -52,7 +52,6 @@
   import SubMenu from '../components/Home/submenu.vue';
 
   import {
-    mapActions,
     mapState
   } from 'vuex';
 
@@ -72,22 +71,6 @@
     },
     computed: {
       ...mapState(['home'])
-    },
-    methods: {
-      ...mapActions(['getSlider', 'getSpecial', 'getTopic', 'getArticle', 'getArticleText','getNotice','getPopular','getQuick']),
-      init() {
-        this.getSlider();
-        this.getSpecial();
-        this.getTopic();
-        this.getArticle();
-        this.getArticleText();
-        this.getNotice();
-        this.getPopular();
-        this.getQuick();
-      }
-    },
-    mounted() {
-      this.init();
     }
   };
 

@@ -58,5 +58,17 @@ const routers = [{
         title: '关于我们'
     },
     component: (resolve) => require(['../views/about.vue'], resolve)
+}, {
+    path: '/author/:name',
+    meta: {
+        title: '文章作者'
+    },
+    component: (resolve) => require(['../views/author.vue'], resolve)
+}, {
+    path: '/publish',
+    meta: {
+        title: '新闻发布'
+    },
+    component: (resolve) => require(['../views/publish.vue'], resolve)
 }];
 export default routers;
