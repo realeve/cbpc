@@ -93,22 +93,31 @@
 		  //图片文件处理：1.获取宽高;2.转换为webp
 		  if($return['width']){         
 			//apache GD库默认对webp处理有较多BUG，转用 imagick方案
-			$imgageDir = $_SERVER['DOCUMENT_ROOT'] .'/upload'."/assets/$year/$month/image";
+			// 此处需使用绝对路径，需要根据实际目录做设置
+			$imgageDir = $_SERVER['DOCUMENT_ROOT'] .'upload/'."assets/$year/$month/";
 			
-			$srcFile = $imgageDir.$filename.$fileType;            
-			$distFile = $imgageDir.$filename.'.webp';          
-			$thumbFile = $imgageDir.'thumb_'.$filename.'.webp';
+			$srcFile = $imgageDir.'image/'.$filename.$fileType;  
+			$thumbFile = $imgageDir.'image/thumb_'.$filename.$fileType;
 			
-			$image = new Imagick($srcFile);
-			$image->stripImage();//去掉exif等信息，如果是新闻网站则不应去掉
+			$distFile = $imgageDir.'webp/'.$filename.'.webp';          
+			$thumbWebpFile = $imgageDir.'webp/thumb_'.$filename.'.webp';
+			
+			$image = new Imagick($srcFile);			
+			// $image->stripImage();//去掉exif等信息，如果是新闻网站则不应去掉
 			$image->setImageFormat('webp');
 			$image->setImageCompression(Imagick::COMPRESSION_JPEG); 
 			$image->setImageCompressionQuality(80); 
 			//转换效果与谷歌官方 cwebp -q 80 input.jpg -o oubput.webp 接近
 			$image->writeImage($distFile);
-			//生成缩略图
+			
+			//生成Webp缩略图
 			$image->thumbnailImage(360,null); 
-			$image->writeImage($thumbFile); 
+			$image->writeImage($thumbWebpFile); 
+			
+			// 生成普通缩略图
+			$image = new Imagick($srcFile);	
+			$image->thumbnailImage(360,null); 
+			$image->writeImage($thumbFile); 			
 			
 			// 不删除原图片
 			// unlink($srcFile);
