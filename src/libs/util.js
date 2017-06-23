@@ -21,4 +21,6 @@ util.ajax = axios.create({
     timeout: 30000
 });
 
+util.uploadUrl =  'http://localhost:70/upload/upload.php';
+
 export default util;
