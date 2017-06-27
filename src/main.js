@@ -12,6 +12,12 @@ import 'vue-awesome/icons';
 import Icon from 'vue-awesome/components/Icon';
 Vue.component('icon', Icon);
 
+import VResource from 'vue-resource';
+Vue.use(VResource);
+
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
+
 new Vue({
     el: '#app',
     router,

@@ -27,6 +27,15 @@
 		}
 	}
 	
+	function createNonceStr($length = 32) {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		$str = "";
+		for ($i = 0; $i < $length; $i++) {
+		$str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+		}
+		return $str;
+	}
+	
 	function handlePost(){
 		$year = date('Y');
 		$month = date('m');
@@ -58,11 +67,12 @@
 		  }
 		  
 		  //随机值          
-		  $filename = time().'_'.(microtime()*1000000).'_'.$filename;
-		  $filename = base64_encode($filename);
-		  
+		  // $filename = time().'_'.(microtime()*1000000).'_'.$filename;
+		  // $filename = base64_encode($filename);
 		  //base64中的'/'不能作为文件名内容
-		  $filename = str_replace("/",'-',$filename); 
+		  // $filename = str_replace("/",'-',$filename); 
+		  $filename = time().'_'.(microtime()*1000000) . createNonceStr();
+		  
 		  $fileType = str_replace("image/svg",'svg',$fileType);
 		  
 		  //图片文件处理：1.获取宽高;2.转换为webp
@@ -88,7 +98,7 @@
 		  move_uploaded_file($file["tmp_name"],$distFile); 
 		  $return['size'] = round($file["size"] / 1024,2)+'kb';
 		  $return['type'] = $file["type"];
-		  $return['url'] = $pathFile.$filename.$fileType;;
+		  $return['url'] = $pathFile.$filename.$fileType;
 			
 		  //图片文件处理：1.获取宽高;2.转换为webp
 		  if($return['width']){         
@@ -131,6 +141,7 @@
 		  $return['status'] = 1;
 		  $return['msg'] = '上传成功';
 		  $return['name'] = $name;
+		  $return['url'] = str_replace('./','/',$return['url']);
 		  echo json_encode($return);
 		}
 	  }

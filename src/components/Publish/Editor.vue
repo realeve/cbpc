@@ -3,7 +3,7 @@
     <quill-editor ref="vEditor" :options="config" v-model="currentContent" @change="onEditorChange($event)">
     </quill-editor>
     <Modal v-model="modal" :styles="{top: '20px',width:'90%'}" class="center">
-      <v-gallery></v-gallery>
+      <v-gallery v-if="modal" :fileList.sync="fileList"></v-gallery>
       <div slot="footer">
         <Button type="error" size="large" @click="cancel">取消</Button>
         <Button type="primary" size="large" @click="insertImage">确定</Button>
@@ -19,6 +19,9 @@
 
   import config from './config.js';
   import VGallery from '../Gallery/gallery.vue';
+  
+  import settings from '../../libs/settings.js';
+
   // use
   export default {
     components: {
@@ -33,7 +36,9 @@
       return {
         config: config.option,
         currentContent: this.content,
-        modal: false
+        modal: false,
+        fileList: [],
+        isInserted:[]
       }
     },
     computed: {
@@ -52,8 +57,16 @@
       }, 2.5 * 1000),
       insertImage() {
         this.modal = false;
+        this.fileList.map(item=>{
+          let url = settings.upload.dir + item.response.url;
+          let insertHis = this.isInserted.filter(inserted=>url == inserted);
+          if(insertHis.length){
+            return;
+          }
+          this.isInserted.push(url);
+          this.editor.insertEmbed(10, 'image', url);
+        })
         this.$Message.success('图片插入成功');
-        // this.editor.insertEmbed(10, 'image', '/static/img/avatar.jpg')
       },
       cancel() {
         this.modal = false;
@@ -97,10 +110,6 @@
   .center {
     display: flex;
     justify-content: center;
-  }
-
-  .ivu-modal-content {
-    min-height: 700px;
   }
 
   .ivu-modal-footer,

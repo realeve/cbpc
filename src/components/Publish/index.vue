@@ -77,7 +77,7 @@
 <script>
   import VEdit from './Editor.vue';
   import VArticleHead from '../Detail/VArticleHead';
-    import VTag from '../Detail/VTag';
+  import VTag from '../Detail/VTag';
 
   export default {
     components: {
@@ -108,7 +108,7 @@
         tags: [],
         newTag: '',
         content: '',
-        quill:{}
+        quill: {}
       }
     },
     computed: {
@@ -158,13 +158,13 @@
         this.tags.splice(index, 1);
       }
     },
-    mounted(){
+    mounted() {
       // console.log(this.quill);
     }
   }
 
 </script>
-<style scoped lang="less">
+<style lang="less">
   @tagHeight: 14px;
   .ivu-tag {
     height: @tagHeight*2;
@@ -193,6 +193,13 @@
       font-size: .16rem;
       color: #444;
       text-indent: 2em;
+      img {
+        max-width: 90%!important;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.12);
+        border: 6px solid rgba(255, 255, 255, 0.82);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
     }
   }
 
