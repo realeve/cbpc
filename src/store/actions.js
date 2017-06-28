@@ -56,7 +56,6 @@ let actions = {
       store.state.home.quickData = res.data
     })
   }
-
 }
 
 export default actions

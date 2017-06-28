@@ -1,11 +1,11 @@
 <template>
     <div class="slider-wrap clearfix">
-        <div class="main-slider flexslider pull-left">
+        <div class="main-slider img-content flexslider pull-left">
             <Carousel autoplay v-model="curIdx">
                 <Carousel-item v-for="item of slider" :key="item">
                     <div class="slide-item">
                         <a :href="item.url">
-                            <img :src="item.img">
+                            <img :src="item.img" class="img-content">
                         </a>
                         <h3 class="slide-title">
                             <a :href="item.url">{{item.title}}</a>
@@ -44,5 +44,10 @@
         .slide-title{
             background:rgba(0,0,0,0.6);
         }
+    }
+    @sliderWidth:43px;
+    .img-content{
+        width:670px;
+        height:@sliderWidth*10;
     }
 </style>

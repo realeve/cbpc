@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="v-editor">
     <quill-editor ref="vEditor" :options="config" v-model="currentContent" @change="onEditorChange($event)">
     </quill-editor>
     <Modal v-model="modal" :styles="{top: '20px',width:'90%'}" class="center">
@@ -19,7 +19,7 @@
 
   import config from './config.js';
   import VGallery from '../Gallery/gallery.vue';
-  
+
   import settings from '../../libs/settings.js';
 
   // use
@@ -38,7 +38,7 @@
         currentContent: this.content,
         modal: false,
         fileList: [],
-        isInserted:[]
+        isInserted: []
       }
     },
     computed: {
@@ -57,10 +57,10 @@
       }, 2.5 * 1000),
       insertImage() {
         this.modal = false;
-        this.fileList.map(item=>{
+        this.fileList.map(item => {
           let url = settings.upload.dir + item.response.url;
-          let insertHis = this.isInserted.filter(inserted=>url == inserted);
-          if(insertHis.length){
+          let insertHis = this.isInserted.filter(inserted => url == inserted);
+          if (insertHis.length) {
             return;
           }
           this.isInserted.push(url);
@@ -94,27 +94,29 @@
   }
 
 </script>
-<style lang="less" scoped>
-  .ql-editor {
-    min-height: 200px;
-    p {
-      font-size: 16pt;
-      color: #333;
-      font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+<style lang="less">
+  .v-editor {
+    .ql-editor {
+      min-height: 400px;
+      p {
+        font-size: 16pt;
+        color: #333;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+      }
+      blockquote {
+        font-size: 16pt;
+      }
     }
-    blockquote {
-      font-size: 16pt;
+
+    .center {
+      display: flex;
+      justify-content: center;
     }
-  }
 
-  .center {
-    display: flex;
-    justify-content: center;
-  }
-
-  .ivu-modal-footer,
-  .ivu-modal-header {
-    border: none;
+    .ivu-modal-footer,
+    .ivu-modal-header {
+      border: none;
+    }
   }
 
 </style>

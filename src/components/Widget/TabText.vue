@@ -1,5 +1,5 @@
 <template>
-  <Tabs value="name0">
+  <Tabs :value="curTab">
     <Tab-pane v-for="(tab,i) of data" :label="tab.category" :name="'name'+i" :key="tab.category">
       <ul class="post-list">
         <li v-for="(item,i) of tab.data" class="list-item" :key="item">
@@ -16,7 +16,22 @@
 
 <script>
   export default {
-    props: ['data']
+    props: ['data'],
+    data(){
+      return{
+        curTab:'name0'
+      }
+    },
+    mounted(){
+      let i = 0;
+      setInterval(()=>{
+        i++;
+        if(i == this.data.length){
+          i = 0;
+        }
+        this.curTab = 'name'+i;
+      },10*1000);
+    }
   };
 
 </script>

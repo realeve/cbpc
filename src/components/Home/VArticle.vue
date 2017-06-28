@@ -1,7 +1,7 @@
 <template>
   <div class="sec-panel main-list">
     <div class="sec-panel-head">
-      <Tabs value="name0">
+      <Tabs :value="curTab">
         <Tab-pane v-for="(item,i) of data" :key="item.category" :label="item.category" :name="'name'+i">
           <v-article-list :loadMore="item.url" :article="item.data"></v-article-list>
         </Tab-pane>
@@ -30,6 +30,21 @@
     //     }
     //   };
     // },
+    data() {
+      return {
+        curTab: 'name0'
+      }
+    },
+    mounted() {
+      let i = 0;
+      setInterval(() => {
+        i++;
+        if (i == this.data.length) {
+          i = 0;
+        }
+        this.curTab = 'name' + i;
+      }, 10 * 1000);
+    }
   };
 
 </script>

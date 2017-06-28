@@ -27,7 +27,7 @@
     </Col>
     <Col :md="6" :xs="24">
     <div class="post-form">
-      <input value="提交发布" class="pf-submit">
+      <a class="pf-submit" @click="submit">提交发布</a>
       <div class="pf-side-item">
         <div class="pf-side-label">
           <h3>分类</h3>
@@ -55,8 +55,10 @@
         </div>
         <div class="pf-side-input">
           <div id="j-thumb-wrap" class="thumb-wrap"></div>
-          <a class="thumb-selector j-thumb" href="javascript:;">设置缩略图片</a>
-          <p class="pf-notice">文章缩略图会显示在文章列表，建议设置一下缩略图</p>
+          <a class="thumb-selector j-thumb" href="javascript:;" @click="chooseThumb">设置缩略图片</a>
+          <p class="pf-notice">文章缩略图会显示在文章列表，建议设置缩略图</p>
+          <thumbnail :showThumb.sync="showThumb" :thumbnail.sync="thumbnail"></thumbnail>
+          <img v-if="thumbnail!=''" :src="thumbnail.replace('image/','image/thumb_').replace('webp/','webp/thumb_')" style="width:100%;">
         </div>
       </div>
     </div>
@@ -78,12 +80,14 @@
   import VEdit from './Editor.vue';
   import VArticleHead from '../Detail/VArticleHead';
   import VTag from '../Detail/VTag';
+  import Thumbnail from './thumbnail';
 
   export default {
     components: {
       VEdit,
       VArticleHead,
-      VTag
+      VTag,
+      Thumbnail
     },
     data() {
       return {
@@ -91,24 +95,14 @@
           title: '',
           summary: ''
         },
-        catList: [{
-            value: 0,
-            label: '新闻在线'
-          },
-          {
-            value: 1,
-            label: '文苑飞歌'
-          },
-          {
-            value: 2,
-            label: '学习研究'
-          },
-        ],
-        category: '',
+        catList: [],
+        category: 0,
         tags: [],
         newTag: '',
         content: '',
-        quill: {}
+        quill: {},
+        showThumb: false,
+        thumbnail: ''
       }
     },
     computed: {
@@ -119,7 +113,12 @@
             url: '#search/' + item
           };
         });
-        let category = this.category == '' ? '' : this.catList[this.category]['label'];
+        let category = this.catList[this.category];
+        if (typeof category == 'undefined') {
+          category = {
+            label: '通知'
+          };
+        }
         return {
           "title": this.formItem.title,
           "author": [{
@@ -131,7 +130,7 @@
             "name": "王狗蛋的表哥"
           }],
           "date": "2017年6月24日",
-          category,
+          category: category.label,
           "dpt": "信息技术部",
           tags,
           "readNum": 2332,
@@ -141,6 +140,9 @@
       }
     },
     methods: {
+      chooseThumb() {
+        this.showThumb = true;
+      },
       shouldTagAdded(val) {
         if (this.newTag.length == 0) {
           return false;
@@ -156,10 +158,34 @@
       handleClose(event, name) {
         const index = this.tags.indexOf(name);
         this.tags.splice(index, 1);
+      },
+      getCatList() {
+        this.$http.get('/static/data/publish_category.json').then(res => {
+          this.catList = res.data;
+        })
+      },
+      submit() {
+          this.$Notice.success({
+            title: '提交数据',
+            desc: 'F12 查看控制台显示所提交数据'
+          });
+        let params = {
+          title: this.formItem.title,
+          summary: this.formItem.summary,
+          category: this.category,
+          tags: this.tags.join(','),
+          content: this.content,
+          thumbnail: this.thumbnail,
+          userId: 0,
+          // 作者、合作者
+          collaborator: '',
+          author: '',
+        }
+        console.log(params);
       }
     },
     mounted() {
-      // console.log(this.quill);
+      this.getCatList();
     }
   }
 
@@ -201,6 +227,10 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       }
     }
+  }
+
+  .pf-submit:hover {
+    color: #fff;
   }
 
 </style>

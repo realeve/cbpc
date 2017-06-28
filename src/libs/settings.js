@@ -7,8 +7,9 @@ let settings = {
     insert: 'http://localhost:100/api/insert',
     gallery:{
       // uid,maxid
-      // select * from tbl_attach where user_id=? and id>? order by id limit 20
-      loading:'http://localhost:100/api/api?ID=11&M=0'
+      // select * from tbl_attach where user_id=? and id<? order by id desc limit 20
+      loadMore:'http://localhost:100/api/api?ID=11&M=0',
+      loading:'http://localhost:100/api/api?ID=12&M=0'
     }
   }
 }

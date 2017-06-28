@@ -1,0 +1,43 @@
+[{
+	"label":"通知",
+	"value":0
+},{
+	"label":"公示",
+	"value":1
+},{
+	"label":"司务公开",
+	"value":2
+},{
+	"label":"新闻在线",
+	"value":3
+},{
+	"label":"企业文化",
+	"value":4
+},{
+	"label":"学习研究",
+	"value":5
+},{
+	"label":"党建",
+	"value":6
+},{
+	"label":"工会",
+	"value":7
+},{
+	"label":"团委",
+	"value":8
+},{
+	"label":"前沿",
+	"value":9
+},{
+	"label":"安全",
+	"value":10
+},{
+	"label":"质量",
+	"value":11
+},{
+	"label":"成本",
+	"value":12
+},{
+	"label":"职教",
+	"value":13
+}]

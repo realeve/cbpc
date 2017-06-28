@@ -10,4 +10,8 @@
 	"title":"这是要闻3的标题",
 	"img":"/static/img/ux-1.png",
 	"url":"#detail/3"
+},{
+	"title":"这是最后一个标题",
+	"img":"/static/img/ux-1.png",
+	"url":"#detail/4"
 }]

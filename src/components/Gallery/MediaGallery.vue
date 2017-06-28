@@ -1,44 +1,46 @@
 <template>
   <div v-infinite-scroll="loadMore" infinite-scroll-disabled="status.value" infinite-scroll-distance="100">
-    <div>
-      <waterfall class="waterfall" :line="'h'" :line-gap="200" :min-line-gap="150" :max-line-gap="250" :single-max-width="250"
-        :watch="mediaItem" ref="waterfall" @reflowed="reflowed">
-        <waterfall-slot v-for="item in mediaItem" :width="item.width" :height="item.height" :order="item.id" :key="item.id" move-class="item-move">
-          <div class="item animated fadeIn">
-            <img :src="mediaDir + item.file_url.replace('image/','image/thumb_')" />
-            <div class="content-wrap">
-              <div class="entry-title">
-                <div class="mask">
-                  <span @click="add2Attach(item)">
-                    <Icon type="android-attach"></Icon>
+    <waterfall class="waterfall" :line="'h'" :line-gap="200" :min-line-gap="150" :max-line-gap="250" :single-max-width="250"
+      :watch="mediaItem" ref="waterfall" @reflowed="reflowed">
+      <waterfall-slot v-for="(item,idx) in mediaItem" :width="item.width" :height="item.height" :order="idx" :key="item" move-class="item-move">
+        <div class="item animated fadeIn">
+          <img :class="{'wf-active':item.active}" :src="mediaDir + item.file_url.replace('image/','image/thumb_').replace('webp/','webp/thumb_')" />
+          <div class="content-wrap">
+            <div class="entry-title">
+              <div class="mask">
+                <span @click="add2Attach(item)">
+                    <Icon type="android-attach" size="25"></Icon>
                   </span>
-                  <span @click="previewImg(item.file_url)">
-                      <Icon type="ios-camera-outline"></Icon>
+                <span @click="previewImg(item.file_url)">
+                      <Icon type="ios-camera-outline" size="25"></Icon>
                   </span>
-                  <span @click="editName(item)">
-                    <Icon type="edit"></Icon>
+                <span v-if="isActive" @click="editName(item)">
+                    <Icon type="edit" size="25"></Icon>
                   </span>
-                  <span @click="deleteMedia(item)">
-                    <Icon type="ios-trash-outline"></Icon>
+                <span v-if="isActive" @click="deleteMedia(item)">
+                    <Icon type="ios-trash-outline" size="25"></Icon>
                   </span>
-                  <p class="pic-name">{{item.file_name}}</p>
-                </div>
+                <p class="pic-name">{{item.file_name}}</p>
               </div>
             </div>
           </div>
-        </waterfall-slot>
-      </waterfall>
-    </div>
+        </div>
+      </waterfall-slot>
+    </waterfall>
+    <!--p class="loading-status" v-html="status.text"></p-->
     <Modal title="查看图片" v-model="visible" class="thumb-wrap" :width="700">
       <img :src="mediaDir+imgName" v-if="visible" style="width: 100%">
     </Modal>
-    <!--p class="loading-status" v-html="status.text"></p-->
   </div>
 </template>
 <script>
   import settings from '../../libs/settings.js';
   import Waterfall from 'vue-waterfall/lib/waterfall';
   import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot';
+
+  import {
+    mapMutations
+  } from 'vuex';
 
   export default {
     name: 'media-gallery',
@@ -58,28 +60,56 @@
         status: {
           value: false,
           text: '初始化...'
-        },
-        maxId: 0,
-        mediaItem: []
+        }
       }
     },
     computed: {
       isActive() {
         //加入  keep-alive，防止在其它页面滚动时加载图片
         return (this.$route.name == 'publish');
+      },
+      maxId: {
+        get() {
+          return this.$store.state.gallery.maxId;
+        },
+        set(val) {
+          this.setGalleryMaxId(val);
+        }
+      },
+      mediaItem: {
+        get() {
+          return this.$store.state.gallery.mediaItem;
+        },
+        set(val) {
+          this.setGalleryMediaItem(val);
+        }
+      },
+      // 数据载入状态标志位。true:已完成
+      loadStatus: {
+        get() {
+          return this.$store.state.gallery.loadComplete;
+        },
+        set(val) {
+          this.setGalleryLoadStatus(val);
+        }
       }
     },
     methods: {
+      ...mapMutations(['setGalleryMediaItem', 'setGalleryMaxId', 'setGalleryLoadStatus']),
       add2Attach(attach) {
         let isAttached = this.fileList.filter(item => item.id == attach.id);
         if (isAttached.length) {
           return;
         }
         attach.response = {
-          url:attach.file_url
+          url: attach.file_url
         };
         this.fileList.push(attach);
         this.$emit('update:fileList', this.fileList);
+
+        // 加入后即从列表中删除
+        this.removeMedia(attach);
+        // this.mediaItem[this.mediaItem.indexOf(attach)].active =true;
       },
       fetchData(api, maxid = 0) {
 
@@ -89,7 +119,7 @@
         }
 
         this.status.value = true;
-        this.status.text = '<i class="el-icon-loading"></i> 正在加载...';
+        // this.status.text = '<i class="el-icon-loading"></i> 正在加载...';
 
         this.$http.jsonp(api, {
             params: {
@@ -102,6 +132,8 @@
 
             let obj = res.data;
             if (obj.rows < 20) {
+              // 数据载入完毕
+              this.loadStatus = true;
               this.status.value = true;
               this.status.text = '';
               if (obj.rows == 0) {
@@ -110,7 +142,7 @@
             }
 
             obj.data = obj.data.map(item => this.getSizeByItem(item));
-            if (this.maxId == '') {
+            if (this.maxId == 0) {
               //页面加载时重置数据 
               this.mediaItem = obj.data;
             } else {
@@ -133,7 +165,13 @@
         }
       },
       loadMore() {
-        this.fetchData(settings.api.gallery.loading, this.maxId);
+        if (!this.loadStatus) {
+          if (this.maxId == 0) {
+            this.fetchData(settings.api.gallery.loading, this.maxId);
+          } else {
+            this.fetchData(settings.api.gallery.loadMore, this.maxId);
+          }
+        }
       },
       getSizeByItem(item) {
         if (item.width) {
@@ -150,11 +188,15 @@
         this.imgName = name;
         this.visible = true;
       },
+      removeMedia(item) {
+        this.mediaItem.splice(this.mediaItem.indexOf(item), 1);
+      },
       deleteMedia(item) {
         this.$Notice.warning({
           title: '提示',
           desc: '删除'
         });
+        this.removeMedia(item);
         // this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         //   confirmButtonText: '确定',
         //   cancelButtonText: '取消',
@@ -261,7 +303,7 @@
           })
       }
     },
-    actived() {
+    mounted() {
       this.loadMore();
     }
   }
@@ -345,6 +387,11 @@
       opacity: 0.9;
       color: #fff;
       background: rgba(0, 0, 0, 0.8);
+    }
+    .wf-active {
+      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.7);
+      padding:5px;
     }
     .wf-enter-active,
     wp-leave {

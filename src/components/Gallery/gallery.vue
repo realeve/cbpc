@@ -1,8 +1,8 @@
 <template>
   <Tabs value="name1" slot="header">
     <Tab-pane label="图片库" name="name1">
-        <media-gallery class="gallery" :fileList.sync="fileList"/>
-    </Tab-pane> 
+      <media-gallery class="gallery" :fileList.sync="fileList" />
+    </Tab-pane>
     <Tab-pane label="上传图像" name="name2">
       <div class="upload-list" v-for="item in uploadList">
         <template v-if="item.status === 'finished'">
@@ -16,7 +16,7 @@
           <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
         </template>
       </div>
-      <Upload multiple ref="upload" :show-upload-list="false" :action="uploadAPI" :max-size="102400" :on-success="setAttachInfo"
+      <Upload :multiple="multiple" ref="upload" :show-upload-list="false" :action="uploadAPI" :max-size="102400" :on-success="setAttachInfo"
         :format="['jpg','jpeg','png','bmp','gif']" :on-format-error="handleFormatError" :on-exceeded-size="handleMaxSize" type="drag"
         style="display: inline-block;width:232px;">
         <!-- :before-upload="handleBeforeUpload" -->
@@ -35,27 +35,51 @@
   import util from '../../libs/util.js';
   import MediaGallery from './MediaGallery.vue';
 
+  import {
+    mapMutations
+  } from 'vuex';
+
   export default {
-    components:{
+    components: {
       MediaGallery
     },
     props: {
       fileList: Array,
+      multiple:{
+        default:true
+      }
     },
     data() {
       return {
         uploadAPI: settings.upload.url,
-        uploadDir:settings.upload.dir,
+        uploadDir: settings.upload.dir,
         imgName: '',
         visible: false,
         uploadList: []
       }
     },
-    // 载入默认数据
-    // select * from tbl_attach where user_id=? uid 附件列表 
+    computed: {
+      maxId: {
+        get() {
+          return this.$store.state.gallery.maxId;
+        },
+        set(val) {
+          this.setGalleryMaxId(val);
+        }
+      },
+      mediaItem: {
+        get() {
+          return this.$store.state.gallery.mediaItem;
+        },
+        set(val) {
+          this.setGalleryMediaItem(val);
+        }
+      }
+    },
     methods: {
+      ...mapMutations(['setGalleryMediaItem', 'setGalleryMaxId']),
       //添加数据后将附件信息存储至数据库
-      setAttachInfo(file,lastFile, fileList) {
+      setAttachInfo(file, lastFile, fileList) {
         let url = settings.api.insert;
         let params = {
           tblname: 'tbl_attach',
@@ -78,6 +102,14 @@
             desc: '文件 ' + file.name + ' 上传成功。'
           });
           this.$emit('update:fileList', fileList);
+
+          // 更新gallery状态
+          params.id = res.data.id;
+          params.response = {
+            url: params.file_url
+          };
+          this.maxId = params.id;
+          this.mediaItem = [params, ...this.mediaItem];
         }).catch(e => {
           console.log(e);
         })
@@ -166,8 +198,9 @@
     z-index: 1001;
   }
 
-  .gallery{
-    height:450px;
-    overflow:scroll;
+  .gallery {
+    height: 450px;
+    overflow: scroll;
   }
+
 </style>
