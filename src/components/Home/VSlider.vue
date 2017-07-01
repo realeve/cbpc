@@ -5,7 +5,7 @@
                 <Carousel-item v-for="item of slider" :key="item">
                     <div class="slide-item">
                         <a :href="item.url">
-                            <img :src="item.img" class="img-content">
+                            <img :src="item.img" :alt="item.title" class="img-content">
                         </a>
                         <h3 class="slide-title">
                             <a :href="item.url">{{item.title}}</a>
@@ -16,9 +16,9 @@
         </div>
 
         <ul class="feature-post pull-right">
-            <li v-for="item of special">
+            <li v-for="item of special" :key="item.url">
                 <a :href="item.url">
-                    <img :src="item.img">
+                    <img :alt="item.title" :src="item.img">
                 </a>
                 <span>{{item.title}}</span>
             </li>

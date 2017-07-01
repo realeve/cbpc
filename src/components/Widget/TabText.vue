@@ -6,9 +6,9 @@
           <span class="date pull-right">{{item.date}}</span>
           <a :href="item.url">{{item.title}}</a>
         </li>
-        <div>
-          <a class="load-more" :href="tab.url">点击查看更多</a>
-        </div>
+        <li class="list-item load-more">
+          <a :href="tab.url">点击查看更多</a>
+        </li>
       </ul>
     </Tab-pane>
   </Tabs>
@@ -47,6 +47,9 @@
   .load-more {
     text-align: center;
     padding: 6px 12px;
+    margin-bottom: 0;
+    &:before{
+      border:none;
+    }
   }
-
 </style>

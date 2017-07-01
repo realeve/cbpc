@@ -2,7 +2,7 @@
   <div class="hidden-xs">
     <div class="sec-panel topic-recommend">
       <div class="sec-panel-head">
-        <h2>友商 <a href="#about" target="_blank" class="more">联系我们</a></h2>
+        <h2>友商 <a href="#about" target="_blank"  rel="nofollow me noopener noreferrer" class="more">联系我们</a></h2>
       </div>
       <div class="sec-panel-body">
         <ul class="list list-partner">
@@ -16,7 +16,7 @@
       </div>
       <div class="sec-panel-body">
         <div class="list list-links">
-          <a v-for="item of home.linkData" target="_blank" :href="item.url">{{item.name}}</a>
+          <a v-for="item of home.linkData" target="_blank"  rel="nofollow me noopener noreferrer" :href="item.url">{{item.name}}</a>
         </div>
       </div>
     </div>

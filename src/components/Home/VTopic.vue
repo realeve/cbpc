@@ -8,7 +8,7 @@
                 <li v-for="item of data" class="topic" :key="item.url">
                     <a class="topic-wrap" :href="item.url">
                         <div class="cover-container">
-                            <img :src="item.img">
+                            <img :alt="item.title" :src="item.img">
                         </div>
                         <span>{{item.title}}</span>
                     </a>

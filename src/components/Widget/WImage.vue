@@ -1,6 +1,6 @@
 <template>
     <div class="widget widget_image_ad">
-        <a href="#" target="_blank">广告位招租</a>
+        <a href="#" target="_blank"  rel="nofollow me noopener noreferrer">广告位招租</a>
     </div>
 </template>
 

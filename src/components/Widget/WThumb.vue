@@ -5,7 +5,7 @@
       <Col v-for="item of data.data" :xs="24" :md="12" class="p-item" :key="item.url">
       <div class="p-item-wrap">
         <a class="thumb" :href="item.url">
-          <img :src="item.img" width="480" height="300" style="display: inline;"> </a>
+          <img :alt="item.title" :src="item.img" width="480" height="300" style="display: inline;"> </a>
         <h4 class="title">
           <a :href="item.url">{{item.title}}</a>
         </h4>
