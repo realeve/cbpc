@@ -42,7 +42,7 @@
   @avatar-size: 100px;
 
   .avatar-bg {
-    background: url('/static/img/user_bg2.jpg') no-repeat center top;
+    background: url('/static/img/user_bg.jpg') no-repeat center top;
     background-size: 100%;
     height: 200px;
   }
