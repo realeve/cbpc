@@ -49,15 +49,12 @@
   import WText from '../components/Widget/WText.vue';
   import WThumb from '../components/Widget/WThumb.vue';
 
-  import SubMenu from '../components/Home/submenu.vue';
-
   import {
     mapState
   } from 'vuex';
 
   export default {
     components: {
-      SubMenu,
       VSlider,
       VTopic,
       VArticle,

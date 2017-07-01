@@ -12,14 +12,14 @@
           <Menu-item name="">
             <router-link to="/" tag="p">首页</router-link>
           </Menu-item>
-          <sub-menu name="list">
+          <Submenu name="list">
             <template slot="title">
               栏目导航
             </template>
             <Menu-item v-for="i in 5" :key="i" :name="'list/'+i">
               <router-link :to="'/list/'+i" tag="p">栏目{{i}}</router-link>
             </Menu-item>
-          </sub-menu>
+          </Submenu>
           <Menu-item name="special">
             <router-link to="/special" tag="p">专题列表</router-link>
           </Menu-item>
@@ -65,17 +65,12 @@
   </header>
 </template>
 <script>
-  import SubMenu from './Home/submenu.vue';
-
   import {
     mapState,
     mapMutations
   } from 'vuex';
 
   export default {
-    components: {
-      SubMenu
-    },
     computed: {
       ...mapState(['user'])
     },
@@ -177,4 +172,15 @@
     height: 35px;
   }
 
+  .ivu-tooltip-arrow {
+    position: absolute;
+    left: 15px;
+    top: 51px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+    content: '';
+  }
 </style>

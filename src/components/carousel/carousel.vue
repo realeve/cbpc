@@ -24,7 +24,7 @@
   import {
     getStyle,
     oneOf
-  } from 'iview/src/utils/assist';
+  } from './assist';
 
   const prefixCls = 'ivu-carousel';
 
