@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div id="app">
     <v-header></v-header>
     <router-view class="v-content"></router-view>
     <Back-top></Back-top>
@@ -27,7 +27,9 @@
       };
     },
     methods: {
-      ...mapActions(['getSlider', 'getSpecial', 'getTopic', 'getArticle', 'getArticleText','getNotice','getPopular','getQuick']),
+      ...mapActions(['getSlider', 'getSpecial', 'getTopic', 'getArticle', 'getArticleText', 'getNotice', 'getPopular',
+        'getQuick'
+      ]),
       init() {
         this.getSlider();
         this.getSpecial();
@@ -47,15 +49,18 @@
 </script>
 
 <style>
-  .app {
+  #app {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  .v-content{
+
+  .v-content {
     flex: 1;
   }
-  
+
   .ivu-tabs-bar {
     margin-bottom: 0px;
   }

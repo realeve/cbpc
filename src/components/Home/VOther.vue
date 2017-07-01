@@ -6,7 +6,7 @@
       </div>
       <div class="sec-panel-body">
         <ul class="list list-partner">
-          <li v-for="item in home.parternerData">
+          <li v-for="item in home.parternerData" :key="item.url">
             <img style="width:152px" :src="item.url">
           </li>
         </ul>
@@ -16,7 +16,7 @@
       </div>
       <div class="sec-panel-body">
         <div class="list list-links">
-          <a v-for="item of home.linkData" target="_blank"  rel="nofollow me noopener noreferrer" :href="item.url">{{item.name}}</a>
+          <a v-for="item of home.linkData" target="_blank"  rel="nofollow me noopener noreferrer" :href="item.url" :key="item.url">{{item.name}}</a>
         </div>
       </div>
     </div>

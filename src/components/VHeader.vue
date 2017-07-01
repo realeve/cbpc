@@ -33,17 +33,17 @@
           <div class="navbar-search" :class="{active}">
             <input ref="search" type="text" class="navbar-search-input" autocomplete="off" placeholder="输入关键词搜索..." v-model="keyWord"
               @keyup.enter="search" @blur="showSearchPanel(false)">
-            <a class="j-navbar-search" href="javascript:;" @mouseenter="showSearchPanel(true)">
+            <div class="j-navbar-search" href="javascript:;" @mouseenter="showSearchPanel(true)">
               <Icon class="search-icon" type="ios-search" :size="20"></Icon>
-            </a>
+            </div>
           </div>
           <div class="j-user-wrap">
-            <ul v-if="user.isLogin" class="profile">
+            <div v-if="user.isLogin" class="profile">
               <Dropdown style="margin-left: 20px" placement="bottom-end">
-                <a :href="user.url">
-                  <img :src="user.img"> {{user.name}}
+                <div @click="redirect(user.url)">
+                  <img :src="user.img" :alt="user.name"> {{user.name}}
                   <Icon type="arrow-down-b"></Icon>
-                </a>
+                </div>
                 <Dropdown-menu slot="list">
                   <Dropdown-item><p @click="userCenter">个人中心</p></Dropdown-item>
                   <Dropdown-item>媒体库</Dropdown-item>
@@ -51,7 +51,7 @@
                   <Dropdown-item><p @click="logOut">退出登录</p></Dropdown-item>
                 </Dropdown-menu>
               </Dropdown>
-            </ul>
+            </div>
             <template v-else>
               <a class="login cur" href="#login">登录</a>--&gt;
               <a class="login cur" href="#register">注册</a>
@@ -88,6 +88,9 @@
     },
     methods: {
       ...mapMutations(['loginStatus']),
+      redirect(path){
+        this.$router.push(path.replace('#',''));
+      },
       showSearchPanel(val) {
         this.active = val;
         if (val) {
