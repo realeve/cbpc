@@ -50,6 +50,7 @@
     margin-bottom: 0;
     &:before{
       border:none;
+      background:none;
     }
   }
 </style>

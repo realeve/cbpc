@@ -24,8 +24,8 @@
         </div>
       </div>
     </li>
-    <li v-if="loadMore" class="load-more-wrap">
-      <a class="load-more" :href="loadMore">点击查看更多</a>
+    <li v-if="loadMore" class="load-more-wrap load-more">
+      <a :href="loadMore">点击查看更多</a>
     </li>
   </ul>
 </template>
@@ -48,15 +48,6 @@
 
   .article-list .item-meta a {
     color: #666;
-  }
-
-  .load-more {
-    text-align: center;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    &:before {
-      border: none;
-    }
   }
 
 </style>
