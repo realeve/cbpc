@@ -1,7 +1,7 @@
 <template>
   <div class="hidden-xs">
     <div class="sec-panel topic-recommend">
-      <div class="sec-panel-head">
+      <!--div class="sec-panel-head">
         <h2>友商 <a href="#about" target="_blank"  rel="nofollow me noopener noreferrer" class="more">联系我们</a></h2>
       </div>
       <div class="sec-panel-body">
@@ -10,7 +10,7 @@
             <img style="width:152px" :src="item.url">
           </li>
         </ul>
-      </div>
+      </div-->
       <div class="sec-panel-head">
         <h2>常用系统 <a href="#about" class="more">申请加入</a></h2>
       </div>

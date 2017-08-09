@@ -15,11 +15,10 @@
         </Row>
         <Row :gutter="20">
           <Col :md="18" :xs="24">
-          <v-topic :data="home.topicData" />
+            <v-article-text-img :article="home.articleTextData2[0]"/>
           </Col>
           <Col :md="6" :xs="24">
           <div class="e-paper">
-            <a></a>
           </div>
           </Col>
         </Row>
@@ -42,6 +41,8 @@
   import VTopic from '../components/Home/VTopic.vue';
   import VArticle from '../components/Home/VArticle.vue';
   import VArticleText from '../components/Home/VArticleText.vue';
+  import VArticleTextImg from '../components/Home/VArticleTextImg.vue';
+  
   import VOther from '../components/Home/VOther.vue';
 
   import WImage from '../components/Widget/WImage.vue';
@@ -60,7 +61,7 @@
       VArticle,
       VArticleText,
       VOther,
-
+      VArticleTextImg,
       WImage,
       WTabText,
       WText,
@@ -76,7 +77,7 @@
 <style scoped lang="less">
   .e-paper {
     width: 200px;
-    height: 200px;
+    height: 235px;
     background: #4285F4;
     text-decoration: none;
     font-size: 15pt;
@@ -87,7 +88,8 @@
     a {
       color: #fff;
     };
-    background: url('../../static/img/tmp/np_logo_200x200.png') center center no-repeat;
+    background: url('/static/img/tmp/np_logo_200x200.png') center center no-repeat;
+    background-size:cover;
   }
 
   @media (max-width: 767px) {
