@@ -1,17 +1,17 @@
 [{
 	"title":"这是专题1的标题",
-	"img":"/static/img/topic.png",
+	"img":"/static/img/tmp/topic_01.jpg",
 	"url":"#detail/1"
 },{
 	"title":"这是专题2的标题",
-	"img":"/static/img/topic.png",
+	"img":"/static/img/tmp/topic_02.jpg",
 	"url":"#detail/2"
 },{
 	"title":"这是专题4的标题",
-	"img":"/static/img/topic.png",
+	"img":"/static/img/tmp/topic_03.jpg",
 	"url":"#detail/3"
 },{
 	"title":"这是专题4的标题",
-	"img":"/static/img/topic.png",
+	"img":"/static/img/tmp/topic_04.jpg",
 	"url":"#detail/4"
 }]

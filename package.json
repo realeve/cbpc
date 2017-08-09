@@ -16,6 +16,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "axios": "^0.15.3",
+    "hammerjs": "^2.0.8",
     "iview": "^2.0.0-rc.17",
     "lodash": "^4.17.4",
     "vue": "^2.3.4",

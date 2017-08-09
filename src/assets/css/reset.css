@@ -1,6 +1,12 @@
-.wrap {
-    padding-top: 62px;
-    overflow: hidden;
+html,
+body,
+div,
+img,
+ul,
+li,
+p {
+    margin: 0;
+    padding: 0;
 }
 
 .main {
@@ -50,19 +56,19 @@
 .pull-left {
     float: left !important;
 }
- 
+
  ::-webkit-scrollbar {
-     display: none;
- }
- 
+    display: none;
+}
+
  :-webkit-full-screen {
-     background-color: transparent;
- }
- 
+    background-color: transparent;
+}
+
  :-moz-full-screen {
-     background-color: transparent;
- }
- 
+    background-color: transparent;
+}
+
  :fullscreen {
-     background-color: transparent;
- }
+    background-color: transparent;
+}

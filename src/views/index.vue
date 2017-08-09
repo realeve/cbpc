@@ -19,7 +19,7 @@
           </Col>
           <Col :md="6" :xs="24">
           <div class="e-paper">
-            <a>电子报</a>
+            <a></a>
           </div>
           </Col>
         </Row>
@@ -29,7 +29,7 @@
         <w-image></w-image>
         <w-tab-text :data="home.noticeData"/>
         <w-thumb :data="home.popularData"/>
-        <Affix :offset-top="62">
+        <Affix :offset-top="100">
           <w-text :data="home.quickData"></w-text>
         </Affix>
       </aside>
@@ -75,7 +75,7 @@
 
 <style scoped lang="less">
   .e-paper {
-    width: 100%;
+    width: 200px;
     height: 200px;
     background: #4285F4;
     text-decoration: none;
@@ -86,7 +86,8 @@
     justify-content: center;
     a {
       color: #fff;
-    }
+    };
+    background: url('../../static/img/tmp/np_logo_200x200.png') center center no-repeat;
   }
 
   @media (max-width: 767px) {

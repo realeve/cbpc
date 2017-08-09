@@ -2,7 +2,7 @@
   <div class="slider-wrap clearfix">
     <div class="main-slider img-content flexslider pull-left">
       <v-carousel autoplay v-model="curIdx">
-        <Carousel-item v-for="item of slider" :key="item">
+        <Carousel-item v-for="(item,i) of slider" :key="i">
           <div class="slide-item">
             <img :src="item.img" :alt="item.title" class="img-content" @click="redirect(item.url)">
             <h3 class="slide-title">

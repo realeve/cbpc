@@ -1,7 +1,7 @@
 <template>
   <div class="sec-panel topic-recommend">
     <div class="sec-panel-head">
-      <h2>专题介绍<a href="#special" class="more">全部专题</a></h2>
+      <h2>文化视野<a href="#special" class="more">全部</a></h2>
     </div>
     <div class="sec-panel-body">
       <ul class="list topic-list">

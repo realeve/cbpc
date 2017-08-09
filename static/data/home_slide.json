@@ -1,13 +1,21 @@
 [{
-	"title":"这是头条标题1",
-	"img":"/static/img/s1.jpg",
+	"title":"公司隆重举行“奋斗者之歌”劳模表彰主题活动",
+	"img":"/static/img/tmp/slider_01.png",
 	"url":"#detail/1"
 },{
-	"title":"这是头条标题2",
-	"img":"/static/img/s2.jpg",
+	"title":"品质成钞微信公众号揭秘花式点钞法",
+	"img":"/static/img/tmp/slider_02.png",
 	"url":"#detail/2"
 },{
-	"title":"这是头条标题3",
-	"img":"/static/img/s3.jpg",
+	"title":"总公司党委巡视组开始对成钞进行2017年度检查",
+	"img":"/static/img/tmp/slider_03.png",
+	"url":"#detail/3"
+},{
+	"title":"节日的坚守——赵平昌问候加班职工和官兵",
+	"img":"/static/img/tmp/slider_04.png",
+	"url":"#detail/3"
+},{
+	"title":"完成制作部XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+	"img":"/static/img/tmp/slider_05.png",
 	"url":"#detail/3"
 }]

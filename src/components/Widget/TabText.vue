@@ -2,7 +2,7 @@
   <Tabs :value="curTab">
     <Tab-pane v-for="(tab,i) of data" :label="tab.category" :name="'name'+i" :key="tab.category">
       <ul class="post-list">
-        <li v-for="(item,i) of tab.data" class="list-item" :key="item">
+        <li v-for="(item,i) of tab.data" class="list-item" :key="i">
           <span class="date pull-right">{{item.date}}</span>
           <a :href="item.url">{{item.title}}</a>
         </li>

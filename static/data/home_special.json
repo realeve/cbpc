@@ -1,17 +1,17 @@
 [{
-	"title":"这是要闻1的标题",
-	"img":"/static/img/ux-1.png",
+	"title":"中钞金服成立 纪念币发行",
+	"img":"/static/img/tmp/subject_01.png",
 	"url":"#detail/1"
 },{
-	"title":"这是要闻2的标题",
-	"img":"/static/img/ux-1.png",
+	"title":"降本增效 检封在行动",
+	"img":"/static/img/tmp/subject_02.png",
 	"url":"#detail/2"
 },{
-	"title":"这是要闻3的标题",
-	"img":"/static/img/ux-1.png",
+	"title":"2017成都市百万职工技能大赛成钞站开赛",
+	"img":"/static/img/tmp/subject_03.png",
 	"url":"#detail/3"
 },{
-	"title":"这是最后一个标题",
-	"img":"/static/img/ux-1.png",
+	"title":"道法自然 老子文化纪念币下线",
+	"img":"/static/img/tmp/subject_04.png",
 	"url":"#detail/4"
 }]
