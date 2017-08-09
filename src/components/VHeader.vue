@@ -69,7 +69,7 @@
               <a class="btn" @click="nextTheme(1)">顶图</a>
             </li>
             <li>
-              <a class="btn" @click="nextTheme(2)">menu</a>
+              <a class="btn" @click="nextTheme(2)">菜单</a>
             </li>
             <li>
               <a class="btn" @click="nextTheme(3)">背景</a>
